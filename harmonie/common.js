@@ -1,9 +1,10 @@
 /* LVO — moteur d'animation commun (préchargeur, défilement fluide, curseur, révélations) */
 (function () {
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduce = new URLSearchParams(location.search).has('calme');
   const fine = matchMedia('(pointer: fine)').matches;
   const root = document.documentElement;
-  window.LVO = { reduce, fine, onReady: [] };
+  window.LVO = { reduce, calm, fine, onReady: [] };
 
   /* ---------- texte découpé en mots ---------- */
   const splitNode = node => {

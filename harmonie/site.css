@@ -386,3 +386,6 @@ footer{background:var(--deep);color:#b9ab9c;padding:clamp(80px,10vw,130px) 0 30p
 .rimgs img:first-child{clip-path:inset(0)}
 .faq details p{overflow:hidden}
 .glow{position:absolute;width:60vmax;height:60vmax;border-radius:50%;background:radial-gradient(circle,rgba(216,193,155,.35),transparent 60%);pointer-events:none;z-index:0;left:50%;top:50%;transform:translate(-50%,-50%)}
+/* mode sans animation (?calme) : tout reste visible */
+.no-anim .shutter,.no-anim .orbit,.no-anim .iris .ring,.no-anim .iris .lbl,.no-anim .rvc{display:none}
+.no-anim .iris .img{clip-path:none}.no-anim .iris .txt{opacity:1}
