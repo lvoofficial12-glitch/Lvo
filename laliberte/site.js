@@ -13,6 +13,7 @@
     if (s) s.addEventListener('error', fb);
     v.addEventListener('error', fb);
     v.play && v.play().catch(() => {});
+    setTimeout(() => { if (v.readyState === 0 || v.networkState === 3) fb(); }, 2500);
   });
 
   /* menu mobile */

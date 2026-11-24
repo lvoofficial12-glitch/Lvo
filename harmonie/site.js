@@ -13,6 +13,7 @@
     const fb = () => { if (v.dataset.fb) return; v.dataset.fb = 1; v.src = v.dataset.fallback; v.load(); v.play().catch(() => {}); };
     if (s) s.addEventListener('error', fb); v.addEventListener('error', fb);
     v.play && v.play().catch(() => {});
+    setTimeout(() => { if (v.readyState === 0 || v.networkState === 3) fb(); }, 2500);
   });
 
   /* compte à rebours jusqu'à l'ouverture */
