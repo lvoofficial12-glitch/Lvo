@@ -3,7 +3,7 @@
 import json, math, pathlib, html as H
 
 OUT = pathlib.Path('/home/claude/lvo/lion')
-V = '5'
+V = '6'
 TEL = '579-368-4357'; TELH = '+15793684357'
 IGURL = 'https://www.instagram.com/mecaniquemobilelion/'
 
@@ -46,8 +46,8 @@ T = {
   'lang': 'fr-CA', 'other': 'EN', 'other_href': 'en/',
   'pages': [('index.html', 'Accueil'), ('services.html', 'Services'), ('zone.html', 'Zone & FAQ'), ('contact.html', 'Demande de service')],
   'demo': 'Maquette préparée par <b>LVO</b> pour Mécanique Mobile Lion. Aperçu de démonstration, pas encore le site officiel.',
-  'demo_s': 'Maquette <b>LVO</b> · aperçu',
-  'call': 'Appeler', 'req': 'Demander un service', 'menu_open': 'Ouvrir le menu',
+  'demo_s': 'Maquette <b>LVO</b> · aperçu de démonstration',
+  'call': 'Appeler', 'req': 'Demander un service', 'tel_l': 'Appel ou texto', 'menu_open': 'Ouvrir le menu',
   'tag': 'MÉCANIQUE MOBILE · ST-LIN',
   'hero_kick': 'Service mécanique mobile · St-Lin',
   'hero_h1': ['On vient', '<span class="amb">à vous.</span>'],
@@ -150,8 +150,8 @@ T = {
   'lang': 'en-CA', 'other': 'FR', 'other_href': '../',
   'pages': [('index.html', 'Home'), ('services.html', 'Services'), ('zone.html', 'Area & FAQ'), ('contact.html', 'Request service')],
   'demo': 'Mockup prepared by <b>LVO</b> for Mécanique Mobile Lion. Demo preview, not the official website yet.',
-  'demo_s': '<b>LVO</b> mockup · preview',
-  'call': 'Call', 'req': 'Request service', 'menu_open': 'Open menu',
+  'demo_s': '<b>LVO</b> mockup · demo preview',
+  'call': 'Call', 'req': 'Request service', 'tel_l': 'Call or text', 'menu_open': 'Open menu',
   'tag': 'MOBILE MECHANIC · ST-LIN',
   'hero_kick': 'Mobile mechanical service · St-Lin',
   'hero_h1': ['We come', '<span class="amb">to you.</span>'],
@@ -310,22 +310,24 @@ def lion_fav():
     return quote(LION.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ').replace(' aria-hidden="true"', ''))
 
 def header(t, cur, pre, alt):
-    links = ''.join(f'<a href="{f}"{" aria-current=page" if f == cur else ""}>{n.replace("&", "&amp;")}</a>' for f, n in t['pages'][:3])
+    links = ''.join(f'<a href="{f}"{" aria-current=page" if f == cur else ""}><span>{n.replace("&", "&amp;")}</span></a>' for f, n in t['pages'][:3])
     mlinks = ''.join(f'<a href="{f}"{" aria-current=page" if f == cur else ""}>{n.replace("&", "&amp;")}</a>' for f, n in t['pages'])
+    fr = t['lang'].startswith('fr')
+    seg = (f'<span class="on">FR</span><a href="{alt}" lang="en">EN</a>' if fr else f'<a href="{alt}" lang="fr">FR</a><span class="on">EN</span>')
     return f'''<header class="site-header">
-  <div class="demo-bar"><span class="dl">{t["demo"]}</span><span class="ds">{t["demo_s"]}</span></div>
   <nav class="nav" aria-label="Navigation">
     <a class="logo" href="index.html" aria-label="Mécanique Mobile Lion">{LION}<span><b>Mécanique <span class="amb">Lion</span></b><small>{t["tag"]}</small></span></a>
     <div class="menu">{links}</div>
     <div class="nav-r">
-      <a class="lang" href="{alt}" lang="{"en" if t["other"] == "EN" else "fr"}">{t["other"]}</a>
-      <a class="tel" href="tel:{TELH}" aria-label="{t["call"]} {TEL}">{PHONE}<span>{TEL}</span></a>
-      <a class="btn b-amb btn-sm" href="contact.html" data-magnetic>{t["req"]}</a>
+      <div class="seg" aria-label="Langue">{seg}</div>
+      <a class="tel2" href="tel:{TELH}" aria-label="{t["call"]} {TEL}"><span class="ti">{PHONE}</span><span class="tt"><small>{t["tel_l"]}</small><b>{TEL}</b></span></a>
+      <a class="btn b-amb btn-sm" href="contact.html" data-magnetic>{t["req"]} {ARROW}</a>
       <button class="burger" type="button" aria-label="{t["menu_open"]}" aria-expanded="false"><i></i><i></i></button>
     </div>
   </nav>
 </header>
-<nav class="mnav" aria-label="Menu">{mlinks}<p class="mnav-foot"><a href="tel:{TELH}">{TEL}</a> · St-Lin–Laurentides<br><a href="{alt}">{"English" if t["other"] == "EN" else "Français"}</a></p></nav>
+<div class="demo-badge" role="note"><span class="dot"></span>{t["demo_s"]}</div>
+<nav class="mnav" aria-label="Menu">{mlinks}<p class="mnav-foot"><a href="tel:{TELH}">{TEL}</a> · St-Lin–Laurentides<br><a href="{alt}">{"English" if fr else "Français"}</a></p></nav>
 '''
 
 def footer(t, pre):

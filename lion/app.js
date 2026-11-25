@@ -41,6 +41,7 @@
   function onScroll() {
     const y = scrollY;
     header.classList.toggle('solid', y > 40);
+    const db = $('.demo-badge'); if (db && mobile) db.style.opacity = y > 40 ? '0' : '1';
     lastY = y;
     if (fab) fab.classList.toggle('on', y > innerHeight * 0.8);
     const max = d.documentElement.scrollHeight - innerHeight;
