@@ -3,7 +3,7 @@
 import json, math, pathlib, html as H
 
 OUT = pathlib.Path('/home/claude/lvo/lion')
-V = '6'
+V = '7'
 TEL = '579-368-4357'; TELH = '+15793684357'
 IGURL = 'https://www.instagram.com/mecaniquemobilelion/'
 
@@ -73,7 +73,7 @@ T = {
   'steps': [('01', 'Vous appelez', 'Décrivez le problème et dites-nous où se trouve le véhicule. Une photo par texto aide à arriver avec les bonnes pièces.'),
             ('02', 'On roule jusqu’à vous', 'Le camion de service se rend sur l’accotement, au chantier, à la ferme ou dans votre cour. Pas de remorquage pour vous rendre au garage.'),
             ('03', 'On répare sur place', 'Diagnostic et réparation directement sur le terrain, pour que vous repreniez la route le plus vite possible.')],
-  'reel_h': 'Partout<br><span class="out-a">autour de St-Lin.</span>',
+  'reel_h': 'Partout<br><span class="out-a">autour de <span class="nw">St-Lin.</span></span>',
   'reel_p': 'Sur la route, au chantier ou au garage de la ferme : si votre véhicule ne peut pas venir, le Lion se déplace.',
   'perks': [('Sur <em>place</em>', 'Là où est le véhicule', 'On travaille sur la route, au chantier ou chez vous.'),
             ('3 <em>en</em> 1', 'Lourd, auto et remorque', 'Un seul service mécanique pour toute votre flotte.'),
@@ -177,7 +177,7 @@ T = {
   'steps': [('01', 'You call', 'Describe the problem and tell us where the vehicle is. A photo by text helps us show up with the right parts.'),
             ('02', 'We drive to you', 'The service truck heads to the shoulder, the job site, the farm or your yard. No tow to get to a shop.'),
             ('03', 'We fix it on site', 'Diagnosis and repair right there, so you get back on the road as fast as possible.')],
-  'reel_h': 'All around<br><span class="out-a">St-Lin.</span>',
+  'reel_h': 'All around<br><span class="out-a nw">St-Lin.</span>',
   'reel_p': 'On the road, on the job site or in the farm garage: if your vehicle can’t come to us, the Lion comes to it.',
   'perks': [('On <em>site</em>', 'Where the vehicle is', 'We work on the road, on the job site or at your place.'),
             ('3 <em>in</em> 1', 'Heavy, car and trailer', 'One mechanical service for your whole fleet.'),
@@ -411,7 +411,7 @@ def home(t, lang, pre, alt):
 {marquee(t["mq"])}
 <section class="manifest"><div class="wrap"><p>{t["manifest"]}</p><div class="meta">{meta}</div></div></section>
 <section class="split"><div class="wrap split-in">
-  <div class="split-img" data-rev><img src="{pre}media/ph/hands.jpg" alt="{t["split_alt"]}" loading="lazy"></div>
+  <div class="split-img" data-wipe><img src="{pre}media/ph/hands.jpg" alt="{t["split_alt"]}" loading="lazy"></div>
   <div class="split-txt"><span class="kick">{t["split_kick"]}</span><h2 class="disp h2" style="margin:18px 0 22px" data-split>{t["split_h"]}</h2><p class="lead" data-rev>{t["split_p"]}</p>
     <ul class="checks" data-rev>{"".join(f"<li><b>{a}</b><span>{b}</span></li>" for a, b in t["split_pts"])}</ul>
     <div class="split-mini" data-rev><img src="{pre}media/ph/tools1.jpg" alt="" loading="lazy"><img src="{pre}media/ph/tools2.jpg" alt="" loading="lazy"></div></div>
@@ -419,11 +419,12 @@ def home(t, lang, pre, alt):
 <section class="sec" style="padding-top:0"><div class="wrap">
   <div class="sec-head"><div><span class="kick" data-rev>{t["div_kick"]}</span><h2 class="disp h2" style="margin-top:18px" data-split>{t["div_h"]}</h2></div><p class="lead" data-rev>{t["div_p"]}</p></div>
   <div class="divs">{cards}</div>
+  <div class="cdots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
 </div></section>
 <section class="wheel"><div class="wheel-pin">
   <canvas id="wheel" aria-hidden="true"></canvas>
   {wl}
-  <div class="wheel-txt wrap"><span class="kick">{t["wh_kick"]}</span><h2 class="disp h2" style="margin:18px 0 20px">{t["wh_h"]}</h2><p class="lead">{t["wh_p"]}</p></div>
+  <div class="wheel-txt wrap"><span class="kick">{t["wh_kick"]}</span><h2 class="disp h2" style="margin:18px 0 20px">{t["wh_h"]}</h2><p class="lead">{t["wh_p"]}</p><div class="wtags">{"".join(f"<span>{x}</span>" for x in t["wh_l"])}</div></div>
 </div></section>
 <section class="gears"><div class="gears-pin">
   <div class="gears-bg"></div><div class="gears-big" aria-hidden="true">{t["gears_big"]}</div>

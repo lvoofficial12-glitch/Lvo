@@ -302,7 +302,7 @@
   /* ---------- Compteur de barre de progression des cartes ---------- */
   $$('.div-card').forEach((c, i) => {
     if (calm) return;
-    gsap.from(c, { y: 120, rotateX: -18, opacity: 0, duration: 1.3, ease: 'expo.out', delay: i * 0.1, scrollTrigger: { trigger: '.divs', start: 'top 80%', toggleActions: 'play none none reverse' } });
+    gsap.from(c, mobile ? { x: 80, opacity: 0, duration: 1.1, ease: 'expo.out', delay: i * 0.12, scrollTrigger: { trigger: '.divs', start: 'top 85%', toggleActions: 'play none none reverse' } } : { y: 120, rotateX: -18, opacity: 0, duration: 1.3, ease: 'expo.out', delay: i * 0.1, scrollTrigger: { trigger: '.divs', start: 'top 80%', toggleActions: 'play none none reverse' } });
   });
 
   /* ---------- Engrenages 3D + étapes ---------- */
@@ -310,7 +310,7 @@
   if (gc && window.LionGears) {
     const g = window.LionGears.init(gc);
     const steps = $$('.step'), bars = $$('.step-bar i b');
-    if (!mobile && !calm) {
+    if (!calm) {
       gsap.set(steps[0], { opacity: 1, y: 0 });
       ScrollTrigger.create({
         trigger: '.gears', start: 'top top', end: 'bottom bottom', scrub: true,
@@ -319,7 +319,7 @@
           const k = Math.min(steps.length - 1, Math.floor(s.progress * steps.length));
           steps.forEach((st, i) => {
             const on = i === k;
-            if (on !== st._on) { st._on = on; gsap.to(st, { opacity: on ? 1 : 0, y: on ? 0 : (i < k ? -60 : 60), duration: 0.6, ease: 'power3.out', overwrite: true }); }
+            if (on !== st._on) { st._on = on; gsap.to(st, { opacity: on ? 1 : 0, y: on ? 0 : (i < k ? -40 : 40), duration: 0.55, ease: 'power3.out', overwrite: true }); }
           });
           bars.forEach((b, i) => { const p = Math.max(0, Math.min(1, s.progress * steps.length - i)); b.style.transform = `scaleX(${p})`; });
         }
@@ -334,14 +334,25 @@
   if (!calm) $$('.split-img img').forEach(im => gsap.fromTo(im, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: im.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
   if (!calm) $$('.split-mini img').forEach((im, i) => gsap.from(im, { y: 60 + i * 40, opacity: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: im, start: 'top 92%' } }));
 
+  /* ---------- Photos : révélation en rideau ---------- */
+  if (!calm) $$('[data-wipe]').forEach(el => gsap.fromTo(el, { clipPath: 'inset(100% 0% 0% 0% round 18px)' }, { clipPath: 'inset(0% 0% 0% 0% round 18px)', duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none reverse' } }));
+  /* ---------- Carrousel des cartes (mobile) ---------- */
+  const divs = $('.divs'), dots = $$('.cdots i');
+  if (divs && dots.length) divs.addEventListener('scroll', () => {
+    const cs = $$('.div-card', divs); let best = 0, bd = 1e9; const mid = divs.scrollLeft + divs.clientWidth / 2;
+    cs.forEach((c, i) => { const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = i; } });
+    dots.forEach((d, i) => d.classList.toggle('on', i === best));
+  }, { passive: true });
+
   /* ---------- Roue 3D ---------- */
   const wc = $('#wheel');
   if (wc && window.LionGears && window.LionGears.initWheel) {
     const lbl = $$('.wlabel');
     const wh = window.LionGears.initWheel(wc, lbl);
-    ScrollTrigger.create({ trigger: '.wheel', start: mobile ? 'top bottom' : 'top top', end: mobile ? 'bottom top' : 'bottom bottom', scrub: true,
-      onUpdate: s => { wh && wh.setProgress(s.progress); lbl.forEach((l, i) => l.classList.toggle('on', mobile ? s.progress > 0.25 : s.progress > 0.15 + i * 0.18)); } });
-    if (!mobile && !calm) gsap.from('.wheel-txt > *', { y: 60, opacity: 0, stagger: 0.1, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: '.wheel', start: 'top 40%', toggleActions: 'play none none reverse' } });
+    const tags = $$('.wtags span');
+    ScrollTrigger.create({ trigger: '.wheel', start: 'top top', end: 'bottom bottom', scrub: true,
+      onUpdate: s => { wh && wh.setProgress(s.progress); lbl.forEach((l, i) => l.classList.toggle('on', s.progress > 0.15 + i * 0.18)); tags.forEach((g, i) => g.classList.toggle('on', s.progress > 0.12 + i * 0.2)); } });
+    if (!calm) gsap.from('.wheel-txt > *', { y: 60, opacity: 0, stagger: 0.1, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: '.wheel', start: 'top 40%', toggleActions: 'play none none reverse' } });
   }
 
   /* ---------- Grand mot du pied de page ---------- */
