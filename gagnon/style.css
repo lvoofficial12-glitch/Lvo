@@ -549,7 +549,7 @@ section{position:relative}
 .reveal-img{overflow:hidden;position:relative}
 .reveal-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--gold3),var(--gold));transform-origin:100% 50%;transform:scaleX(0);pointer-events:none}
 
-@media (prefers-reduced-motion:reduce){.marquee .track,.wall-row,.gold-text,.hero-streak{animation:none}}
+.no-anim .marquee .track,.no-anim .wall-row{animation:none}
 .link svg{width:16px;height:16px;flex:none}
 .link{white-space:nowrap}
 .demo-bar .ds{display:none}

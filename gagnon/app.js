@@ -6,7 +6,7 @@
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
   const root = document.documentElement;
   const page = document.body.dataset.page;
-  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const calm = new URLSearchParams(location.search).has('calme');
   const fine = matchMedia('(pointer: fine)').matches;
   const isMobile = () => matchMedia('(max-width: 760px)').matches;
   const hasGsap = !!(window.gsap && window.ScrollTrigger) && !calm;
