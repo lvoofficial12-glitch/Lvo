@@ -2,15 +2,15 @@
   "_aide": "Réglages du Reel cuisine. Les chemins sont relatifs à ce dossier. Voir LISEZMOI.md.",
   "site": "../../cuisine-scroll",
   "images_hd": "images-hd",
-  "nb_images": 724,
+  "nb_images": 700,
   "debut_etapes": [
     1,
     37,
     115,
-    199,
-    247,
-    373,
-    574
+    201,
+    249,
+    372,
+    554
   ],
   "nom_entreprise": "VOTRE ENTREPRISE",
   "url_affichee": "votreentreprise.ca",
