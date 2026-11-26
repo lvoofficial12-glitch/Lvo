@@ -24,8 +24,9 @@ const CONFIG = {
   // 1 Foundation, 2 Framing, 3 Roof, 4 Exterior, 5 Entrance, 6 Interior, 7 Pool
   stageStartFrames: [1, 21, 49, 73, 105, 160, 187],
 
-  // Smoothing of the scroll in seconds (0 = instant, 1 = very soft)
-  scrub: 0.8,
+  // Smoothing of the scroll in seconds (0 = instant, 1 = very soft).
+  // Keep it low so the picture follows the hand: higher values feel like a video catching up.
+  scrub: 0.4,
   // Cross-fade between two neighbouring frames. Only turn on if consecutive
   // frames are very similar (e.g. extracted from a slow video at 24+ fps),
   // otherwise you get a "double image" effect during fast camera moves.
