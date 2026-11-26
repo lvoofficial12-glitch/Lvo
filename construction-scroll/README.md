@@ -5,7 +5,7 @@ Site d'une page pour une entreprise de construction haut de gamme. Quand le visi
 - HTML/CSS/JS pur, aucune étape de compilation.
 - GSAP 3.12.5 + ScrollTrigger, inclus localement dans `js/vendor/` (aucun CDN).
 - Prêt pour Netlify, avec un formulaire de devis qui fonctionne via Netlify Forms.
-- Les images actuelles viennent de **7 images clés photoréalistes générées par IA** (Higgsfield, GPT Image), une par étape. Le script `tools/build_frames.py` les transforme en séquence de 120 images (zoom lent, fondus, entrée dans la maison). Pour mettre tes propres images, voir plus bas.
+- Les images actuelles sont extraites de **2 vraies vidéos générées par IA** (Canva, moteur H3 Max) : une construction en accéléré caméra fixe, puis l'arrivée vers la porte, l'entrée dans le salon et la piscine au coucher du soleil. Le script `tools/video_to_frames.py` les découpe en 225 images. Les vidéos sources sont dans `../promo/sources/`.
 
 ---
 
@@ -21,8 +21,9 @@ construction-scroll/
 ├── js/vendor/            ← GSAP + ScrollTrigger
 ├── frames/               ← images ORDINATEUR (paysage) frame_001.webp …
 │   └── mobile/           ← images MOBILE (portrait) frame_001.webp …
-├── tools/keyframes/      ← les 7 images clés (stage1.jpg … stage7.jpg)
-├── tools/build_frames.py ← fabrique la séquence à partir des 7 images clés
+├── tools/video_to_frames.py ← découpe une ou plusieurs vidéos en images (ordinateur + mobile)
+├── tools/keyframes/      ← les 7 images de référence utilisées pour générer les vidéos
+├── tools/build_frames.py ← (alternative sans vidéo) séquence à partir de 7 images fixes
 ├── og.jpg                ← image de partage (réseaux sociaux)
 ├── netlify.toml          ← configuration Netlify (cache, en-têtes)
 └── favicon.svg
@@ -30,15 +31,15 @@ construction-scroll/
 
 Les 7 étapes :
 
-| # | Étape | Texte | Première image (par défaut) |
+| # | Étape | Texte | Première image |
 |---|-------|-------|-----------------------------|
 | 1 | Foundation | Every home starts from the ground up. | 1 |
-| 2 | Framing | Brick by brick, floor by floor. | 18 |
-| 3 | Roof & structure | Built to last. | 35 |
-| 4 | Exterior | Built to the last detail. | 52 |
-| 5 | Entrance | Step inside your next chapter. | 69 |
-| 6 | Interior | Spaces made for the light. | 86 |
-| 7 | Pool / sunset | Welcome home. + « Get a free quote » | 103 |
+| 2 | Framing | Brick by brick, floor by floor. | 21 |
+| 3 | Roof & structure | Built to last. | 49 |
+| 4 | Exterior | Built to the last detail. | 73 |
+| 5 | Entrance | Step inside your next chapter. | 105 |
+| 6 | Interior | Spaces made for the light. | 160 |
+| 7 | Pool / sunset | Welcome home. + « Get a free quote » | 187 |
 
 ---
 
@@ -89,7 +90,19 @@ Conseils :
   Vise **moins de 8 Mo** au total par jeu d'images.
 - Garde le sujet **à droite** sur la version horizontale et **dans la moitié haute** sur la version verticale : le texte s'affiche à gauche (ordinateur) et en bas (mobile).
 
-### 2. Extraire les images avec ffmpeg
+### 2. Extraire les images
+
+**Le plus simple : le script fourni** (Python 3 + Pillow + ffmpeg). Il crée les deux jeux d'images (ordinateur et mobile), en enchaînant plusieurs vidéos si besoin :
+
+```bash
+pip install pillow
+python3 tools/video_to_frames.py ma-video-1.mp4 ma-video-2.mp4 --fps 8
+# options : --width 1152 (largeur ordinateur), --quality 56, --mobile-cx 0.56 (centre gardé sur mobile)
+```
+
+Il affiche le nombre d'images à mettre dans `CONFIG.frameCount`.
+
+**Ou à la main avec ffmpeg :**
 
 ```bash
 # Ordinateur (paysage). Ajuste fps pour obtenir 100–200 images.
@@ -148,12 +161,12 @@ Autres réglages :
 - **Textes des étapes** : les balises `<article class="chapter">` dans `index.html`. Le mot en *italique doré* est dans `<em>…</em>`.
 - **Services** : la section `#services`. Les 3 services sont des exemples génériques à adapter.
 - **Couleurs et polices** : variables en haut de `css/style.css` (`--gold`, `--cta`, `--serif`, `--sans`…).
-- **Longueur du défilement** : `--story-length: 820vh` dans `css/style.css`. Plus grand = construction plus lente.
+- **Longueur du défilement** : `--story-length: 1000vh` dans `css/style.css`. Plus grand = construction plus lente.
 - **Image de partage** (`og:image`) : `og.jpg` (1200 × 630) est fournie. Une fois le site en ligne, remplace `og.jpg` par son adresse **complète** (ex. `https://tonsite.com/og.jpg`), car les réseaux sociaux ne lisent pas les chemins relatifs.
 
 ---
 
-## Les images actuelles (7 images clés → séquence)
+## Alternative sans vidéo (7 images clés → séquence)
 
 Sans vidéo, la séquence est fabriquée à partir de **7 images fixes**, une par étape :
 - Les étapes 1 à 4 et 7 utilisent exactement le même angle de caméra. Le fondu de l'une à l'autre donne l'effet « la maison se construit ».
@@ -170,9 +183,11 @@ pip install pillow
 python3 tools/build_frames.py
 ```
 
-Poids actuel : environ 11 Mo pour la version ordinateur (1280 × 720) et 3 Mo pour la version mobile (540 × 960). Pour alléger, baisse `--quality` (ex. `--quality 55`).
+Ce script produit 120 images : remets alors `frameCount: 120` et `stageStartFrames: [1, 18, 35, 52, 69, 86, 103]`, et `blendFrames: false`.
 
-**Important pour un vrai client** : ces images sont générées par IA, ce ne sont pas des photos de projets réels. Sur le site d'un entrepreneur, ne les présente pas comme ses réalisations. Remplace-les par des photos ou vidéos de ses chantiers, ou indique clairement qu'il s'agit d'illustrations.
+**Important pour un vrai client** : les vidéos et images actuelles sont générées par IA, ce ne sont pas des projets réels. Sur le site d'un entrepreneur, ne les présente pas comme ses réalisations. Remplace-les par des photos ou vidéos de ses chantiers, ou indique clairement qu'il s'agit d'illustrations.
+
+Poids actuel du site : environ 12 Mo d'images pour la version ordinateur (1152 × 648) et 5 Mo pour la version mobile (540 × 960). Pour alléger, baisse `--quality` ou `--fps` dans `video_to_frames.py`.
 
 Le dossier `tools/` n'est pas nécessaire au site. Netlify le bloque (`netlify.toml`) et tu peux le supprimer.
 

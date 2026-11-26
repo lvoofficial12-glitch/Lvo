@@ -4,7 +4,7 @@
    ========================================================= */
 const CONFIG = {
   // Total number of images in /frames (frame_001.webp … frame_120.webp)
-  frameCount: 120,
+  frameCount: 225,
 
   // Landscape frames (desktop, tablets in landscape)
   desktopPath: 'frames/',
@@ -18,18 +18,18 @@ const CONFIG = {
 
   // Change this (2, 3, …) every time you replace the frames after launch,
   // so returning visitors don't see old cached images.
-  version: '2',
+  version: '3',
 
   // First frame of each of the 7 stages (1-based). Must be increasing.
   // 1 Foundation, 2 Framing, 3 Roof, 4 Exterior, 5 Entrance, 6 Interior, 7 Pool
-  stageStartFrames: [1, 18, 35, 52, 69, 86, 103],
+  stageStartFrames: [1, 21, 49, 73, 105, 160, 187],
 
   // Smoothing of the scroll in seconds (0 = instant, 1 = very soft)
   scrub: 0.8,
   // Cross-fade between two neighbouring frames. Only turn on if consecutive
   // frames are very similar (e.g. extracted from a slow video at 24+ fps),
   // otherwise you get a "double image" effect during fast camera moves.
-  blendFrames: false,
+  blendFrames: true,
 
   // Which part of the image stays visible when the screen crops it (0–1)
   focusX: 0.5,
