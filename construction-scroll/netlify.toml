@@ -1,0 +1,30 @@
+# Netlify: publish this folder as-is (no build step).
+[build]
+  publish = "."
+  command = ""
+
+# Frames are versioned with ?v= (see CONFIG.version in js/main.js),
+# so they can be cached for a long time.
+[[headers]]
+  for = "/frames/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/vendor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+# The generator script is not part of the site
+[[redirects]]
+  from = "/tools/*"
+  to = "/404.html"
+  status = 404
+  force = true
