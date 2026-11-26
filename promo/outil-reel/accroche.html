@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=TikTok+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:transparent}
+  #hook{position:absolute;left:70px;right:70px;top:330px;text-align:center;font-family:'TikTok Sans',sans-serif;line-height:1.38}
+  /* TikTok "background" text style: one rounded white box per line, black text */
+  .box span.t{background:#fff;color:#000;font-weight:700;font-size:58px;padding:6px 20px;border-radius:14px;
+    -webkit-box-decoration-break:clone;box-decoration-break:clone}
+  /* TikTok classic white text with a thin dark outline + soft shadow */
+  .outline span.t{color:#fff;font-weight:700;font-size:62px;-webkit-text-stroke:6px #000;paint-order:stroke fill;
+    text-shadow:0 3px 8px rgba(0,0,0,.35)}
+  .outline{line-height:1.2}
+  .em{font-family:'Noto Color Emoji';font-weight:400;-webkit-text-stroke:0}
+</style></head>
+<body>
+<div id="hook"><span class="t">{{LIGNE1}}</span><br><span class="t">{{LIGNE2}} <span class="em">{{EMOJIS}}</span></span></div>
+<script>
+  var s = (location.search.match(/style=(\w+)/) || [])[1] || 'box';
+  document.getElementById('hook').className = s;
+</script>
+</body></html>

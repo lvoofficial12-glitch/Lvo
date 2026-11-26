@@ -1,0 +1,20 @@
+{
+  "_aide": "Réglages du Reel. Les chemins sont relatifs à ce dossier. Voir LISEZMOI.md.",
+  "site": "../../construction-scroll",
+  "images_hd": "images-hd",
+  "nb_images": 674,
+  "debut_etapes": [1, 61, 145, 217, 313, 478, 559],
+  "nom_entreprise": "VOTRE ENTREPRISE",
+  "url_affichee": "votreentreprise.ca",
+  "accroche": { "ligne1": "Ce que tes clients voient", "ligne2": "avant de t’appeler", "emojis": "👀🏡", "style": "outline" },
+  "photo": "fond-bureau.jpg",
+  "recadrage": { "x": 1174, "y": 1236, "largeur": 1488 },
+  "coins_ecran": [[1401.9, 2084.1], [2572.5, 2168.5], [2458.4, 2987.7], [1242.3, 2827.6]],
+  "duree": 15.0,
+  "fps": 60,
+  "gestes": [
+    [0.50, 1.00, 0.060], [1.60, 1.05, "etape:1"], [3.00, 1.05, "etape:2"], [4.25, 0.60, "etape:2-0.027"],
+    [5.00, 1.10, "etape:3"], [6.45, 1.00, 0.500], [7.50, 1.00, "etape:4"], [8.90, 1.10, "etape:5"],
+    [10.40, 1.10, "etape:6"], [12.50, 1.20, "fin"]
+  ]
+}

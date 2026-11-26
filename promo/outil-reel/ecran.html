@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@500&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;width:1440px;height:900px;overflow:hidden;background:#0c0b0a}
+  /* everything that "is in the room" moves together (subtle camera breathing) */
+  #cam{position:absolute;inset:0;transform-origin:540px 912px;will-change:transform}
+  #bg{position:absolute;inset:0;width:1080px;height:1920px}
+  /* the laptop display: a flat 1440x900 screen mapped onto the photo's screen */
+  #screen{position:absolute;left:0;top:0;width:1440px;height:900px;overflow:hidden;background:#0c0b0a;
+    }
+  .bar{position:absolute;left:0;right:0;top:0;height:52px;background:#262524;border-bottom:1px solid #000;
+    display:flex;align-items:center;font-family:Inter,system-ui,sans-serif;color:#d9d6d2}
+  .lights{display:flex;gap:9px;margin-left:18px}
+  .lights i{width:13px;height:13px;border-radius:50%;display:block;background:#ff5f57}
+  .lights i:nth-child(2){background:#febc2e}.lights i:nth-child(3){background:#28c840}
+  .nav{display:flex;gap:22px;margin-left:34px;opacity:.55}
+  .nav svg{width:18px;height:18px}
+  .addr{position:absolute;left:50%;transform:translateX(-50%);width:560px;height:34px;border-radius:9px;background:#383634;
+    display:flex;align-items:center;justify-content:center;gap:9px;font-size:16px;font-weight:500;letter-spacing:.01em}
+  .addr svg{width:13px;height:13px;opacity:.75}
+  .right{margin-left:auto;margin-right:20px;display:flex;gap:22px;opacity:.55}
+  .right svg{width:18px;height:18px}
+  #site{position:absolute;left:0;top:53px;width:1440px;height:847px;border:0;display:block}
+  /* cursor + scroll-wheel indicator, on the right edge of the page */
+  #cursor{position:absolute;left:1296px;top:770px;width:26px;height:38px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.45))}
+  #wheel{position:absolute;left:1336px;top:782px;width:30px;height:46px;border-radius:15px;border:2.5px solid rgba(255,255,255,.92);
+    background:rgba(20,18,16,.45);box-sizing:border-box;opacity:0;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+  #wheel b{position:absolute;left:50%;top:8px;width:4px;height:9px;margin-left:-2px;border-radius:2px;background:#fff}
+  #chev{position:absolute;left:1339px;top:834px;width:24px;height:22px;opacity:0}
+  /* glass: soft reflection + slight dimming so the screen sits in the photo */
+  #sbar{position:absolute;right:3px;top:56px;width:9px;border-radius:5px;background:rgba(235,235,235,.62);
+    box-shadow:0 0 0 1px rgba(0,0,0,.35);opacity:0}
+  #glass{position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(118deg,rgba(255,236,210,.09) 0%,rgba(255,236,210,.03) 28%,rgba(255,255,255,0) 45%),
+               linear-gradient(0deg,rgba(0,0,0,.06),rgba(0,0,0,.06));
+    box-shadow:inset 0 0 18px rgba(0,0,0,.35)}
+  /* hook text, TikTok / Reels style */
+  #hook{position:absolute;left:60px;right:60px;top:372px;text-align:center;
+    font-family:Montserrat,sans-serif;font-weight:800;font-size:66px;line-height:1.14;letter-spacing:-.5px;color:#fff;
+    -webkit-text-stroke:9px #000;paint-order:stroke fill;text-shadow:0 5px 14px rgba(0,0,0,.35)}
+  #hook .em{-webkit-text-stroke:0;font-family:'Noto Color Emoji';font-weight:400;font-size:.92em;text-shadow:none}
+</style></head>
+<body>
+<div id="cam">
+  
+  <div id="screen">
+    <div class="bar">
+      <div class="lights"><i></i><i></i><i></i></div>
+      <div class="nav">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="3.5" width="15" height="13" rx="2.5"/><path d="M8 3.5v13"/></svg>
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4.5 7 10l5.5 5.5"/></svg>
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.5"><path d="M7.5 4.5 13 10l-5.5 5.5"/></svg>
+      </div>
+      <div class="addr">
+        <svg viewBox="0 0 14 16" fill="currentColor"><path d="M3 7V5a4 4 0 0 1 8 0v2h.5A1.5 1.5 0 0 1 13 8.5v6A1.5 1.5 0 0 1 11.5 16h-9A1.5 1.5 0 0 1 1 14.5v-6A1.5 1.5 0 0 1 2.5 7zm1.8 0h4.4V5a2.2 2.2 0 0 0-4.4 0z"/></svg>
+        {{URL}}
+      </div>
+      <div class="right">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 2.5v10M6.5 6 10 2.5 13.5 6"/><path d="M5 9.5H4v8h12v-8h-1"/></svg>
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg>
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5.5" width="11" height="11" rx="2"/><path d="M6.5 3.5h9a2 2 0 0 1 2 2v9"/></svg>
+      </div>
+    </div>
+    <iframe id="site" src="site/index.html"></iframe>
+    <svg id="cursor" viewBox="0 0 26 38"><path d="M2 2 L2 30 L9 23.5 L14 34.5 L19 32.3 L14 21.5 L23.5 21.5 Z" fill="#000" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/></svg>
+    <div id="wheel"><b id="wheelDot"></b></div>
+    <svg id="chev" viewBox="0 0 24 22" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l7 6 7-6"/><path d="M5 12l7 6 7-6" opacity=".55"/></svg>
+    <div id="sbar"></div>
+    <div id="glass"></div>
+  </div>
+</div>
+
+<script>
+  // called by the recorder for every frame
+  window.setFrame = function (o) {
+    var sb = document.getElementById('sbar');
+    sb.style.top = o.sbTop.toFixed(1) + 'px'; sb.style.height = o.sbH.toFixed(1) + 'px'; sb.style.opacity = o.sbA.toFixed(3);
+    
+    var a = Math.max(0, Math.min(1, o.wheel));
+    document.getElementById('wheel').style.opacity = (0.15 + 0.85 * a).toFixed(3);
+    document.getElementById('chev').style.opacity = a.toFixed(3);
+    document.getElementById('chev').style.transform = 'translateY(' + (o.phase % 1 * 6).toFixed(2) + 'px)';
+    document.getElementById('wheelDot').style.transform = 'translateY(' + (o.phase % 1 * 12).toFixed(2) + 'px)';
+    document.getElementById('wheelDot').style.opacity = (1 - (o.phase % 1) * 0.7).toFixed(3);
+  };
+</script>
+</body></html>
