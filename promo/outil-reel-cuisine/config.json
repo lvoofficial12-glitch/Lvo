@@ -1,0 +1,101 @@
+{
+  "_aide": "Réglages du Reel cuisine. Les chemins sont relatifs à ce dossier. Voir LISEZMOI.md.",
+  "site": "../../cuisine-scroll",
+  "images_hd": "images-hd",
+  "nb_images": 724,
+  "debut_etapes": [
+    1,
+    37,
+    115,
+    199,
+    247,
+    373,
+    574
+  ],
+  "nom_entreprise": "VOTRE ENTREPRISE",
+  "url_affichee": "votreentreprise.ca",
+  "accroche": {
+    "ligne1": "Ce que tes clients voient",
+    "ligne2": "avant de t’appeler",
+    "emojis": "👀🍳",
+    "style": "outline"
+  },
+  "photo": "fond-bureau.jpg",
+  "recadrage": {
+    "x": 1174,
+    "y": 1236,
+    "largeur": 1488
+  },
+  "coins_ecran": [
+    [
+      1401.9,
+      2084.1
+    ],
+    [
+      2572.5,
+      2168.5
+    ],
+    [
+      2458.4,
+      2987.7
+    ],
+    [
+      1242.3,
+      2827.6
+    ]
+  ],
+  "duree": 15.0,
+  "fps": 60,
+  "gestes": [
+    [
+      0.5,
+      1.0,
+      0.025
+    ],
+    [
+      1.6,
+      1.05,
+      "etape:1"
+    ],
+    [
+      3.0,
+      1.05,
+      "etape:2"
+    ],
+    [
+      4.25,
+      0.6,
+      "etape:2-0.027"
+    ],
+    [
+      5.0,
+      1.1,
+      "etape:3"
+    ],
+    [
+      6.45,
+      1.0,
+      "etape:4"
+    ],
+    [
+      7.6,
+      1.0,
+      0.555
+    ],
+    [
+      8.75,
+      1.1,
+      "etape:5"
+    ],
+    [
+      10.3,
+      1.2,
+      "etape:6"
+    ],
+    [
+      12.5,
+      1.2,
+      "fin"
+    ]
+  ]
+}
