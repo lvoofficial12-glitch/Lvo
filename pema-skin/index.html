@@ -823,11 +823,11 @@ function start(){
   /* stacking layers: previous one shrinks and darkens */
   ST.matchMedia({'(min-width: 861px)':()=>{
     const ls=G.utils.toArray('.layer');
-    ls.forEach((l,i)=>{if(i===ls.length-1)return;G.to(l,{scale:.9,filter:'brightness(.75)',borderRadius:'44px',ease:'none',scrollTrigger:{trigger:ls[i+1],start:'top bottom',end:'top top',scrub:true}})});
+    ls.forEach((l,i)=>{if(i===ls.length-1)return;G.to(l,{scale:.92,borderRadius:'44px',ease:'none',scrollTrigger:{trigger:ls[i+1],start:'top bottom',end:'top top',scrub:true}})});
   }});
   /* background colour change */
   G.utils.toArray('[data-bg]').forEach(s=>ST.create({trigger:s,start:'top 55%',end:'bottom 55%',onToggle:self=>{if(self.isActive)G.to(bgCol,{v:s.dataset.bg,duration:1.1,ease:'power2.out',onUpdate:()=>{document.body.style.background=bgCol.v}})}}));
-  G.from('#eq .t',{rotateX:-75,y:70,opacity:0,duration:1.5,ease:'expo.out',stagger:.16,scrollTrigger:{trigger:'#eq',start:'top 85%'}});
+  G.from('#eq .t',{y:70,scale:.94,opacity:0,duration:1.5,ease:'expo.out',stagger:.16,scrollTrigger:{trigger:'#eq',start:'top 85%'}});
   G.from('#eq .op',{scale:0,opacity:0,duration:1,ease:'back.out(2.2)',stagger:.2,delay:.4,scrollTrigger:{trigger:'#eq',start:'top 85%'}});
   document.querySelectorAll('[data-count]').forEach(el=>{const o={v:0},n=+el.dataset.count;G.to(o,{v:n,duration:1.8,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 95%'},onUpdate:()=>{el.textContent=Math.round(o.v)}})});
   const m1=document.getElementById('mq1'),m2=document.getElementById('mq2');let x1=0,x2=-50,vel=0;
