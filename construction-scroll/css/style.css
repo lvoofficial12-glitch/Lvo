@@ -237,6 +237,12 @@ em { font-style: italic; color: var(--gold); }
 @media (max-width: 759px) {
   .chapter__actions .btn { min-height: 46px; padding: 0 18px; font-size: 11px; letter-spacing: 0.1em; }
 }
+/* small phones: keep only the main call to action so the text stays below the picture */
+@media (max-width: 479px) {
+  .chapter__actions .btn--ghost { display: none; }
+  .chapter__title { font-size: clamp(2.5rem, 10.5vw, 3rem); }
+  .chapter--final .chapter__title { font-size: clamp(3rem, 13vw, 3.6rem); }
+}
 
 /* Buttons */
 .btn {

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr-CA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>[NOM DE L'ENTREPRISE] — Luxury custom homes, from the ground up</title>
-  <meta name="description" content="[NOM DE L'ENTREPRISE] designs and builds luxury custom homes — from the foundation to the pool. Get a free quote for your project.">
+  <title>[NOM DE L'ENTREPRISE] — Maisons haut de gamme sur mesure</title>
+  <meta name="description" content="[NOM DE L'ENTREPRISE] conçoit et construit des maisons haut de gamme sur mesure, des fondations jusqu’à la piscine. Demandez votre soumission gratuite.">
   <meta name="theme-color" content="#0c0b0a">
-  <meta property="og:title" content="[NOM DE L'ENTREPRISE] — Luxury custom homes">
-  <meta property="og:description" content="From bare land to the keys in your hand. Get a free quote.">
+  <meta property="og:title" content="[NOM DE L'ENTREPRISE] — Maisons haut de gamme sur mesure">
+  <meta property="og:description" content="Du terrain vierge jusqu’aux clés dans vos mains. Soumission gratuite.">
+  <meta property="og:locale" content="fr_CA">
   <meta property="og:type" content="website">
-  <!-- Replace with the FULL url once online, e.g. https://example.com/og.jpg -->
+  <!-- Remplacer par l'adresse COMPLÈTE une fois en ligne, ex. https://exemple.com/og.jpg -->
   <meta property="og:image" content="og.jpg">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
@@ -26,20 +27,20 @@
       <p class="loader__brand">[NOM DE L'ENTREPRISE]</p>
       <p class="loader__count"><span id="loaderPct">0</span><small>%</small></p>
       <div class="loader__bar" aria-hidden="true"><span id="loaderBar"></span></div>
-      <p class="loader__hint">Laying the foundation…</p>
+      <p class="loader__hint">On coule les fondations…</p>
     </div>
   </div>
 
   <!-- ============ NAV ============ -->
   <header class="nav" id="nav">
-    <a class="nav__logo" href="#top" aria-label="[NOM DE L'ENTREPRISE], back to top">
+    <a class="nav__logo" href="#top" aria-label="[NOM DE L'ENTREPRISE], retour en haut">
       <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 11.2 12 4l9 7.2V20a1 1 0 0 1-1 1h-5.5v-6h-5v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
       <span>[NOM DE L'ENTREPRISE]</span>
     </a>
-    <nav class="nav__links" id="navLinks" aria-label="Main">
-      <a href="#build">The build</a>
+    <nav class="nav__links" id="navLinks" aria-label="Navigation principale">
+      <a href="#build">La construction</a>
       <a href="#services">Services</a>
-      <a href="#quote" class="nav__cta">Free quote</a>
+      <a href="#quote" class="nav__cta">Soumission gratuite</a>
     </nav>
     <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks">
       <span class="sr-only">Menu</span><i></i><i></i>
@@ -47,76 +48,76 @@
   </header>
 
   <main id="top">
-    <!-- ============ SCROLL STORY ============ -->
-    <section class="story" id="build" aria-label="The build, from foundation to finished home">
+    <!-- ============ HISTOIRE AU DÉFILEMENT ============ -->
+    <section class="story" id="build" aria-label="La construction, des fondations à la maison finie">
       <div class="story__sticky">
         <canvas class="story__canvas" id="frames" aria-hidden="true"></canvas>
         <div class="story__shade" aria-hidden="true"></div>
 
         <div class="chapters">
           <article class="chapter" data-stage="0">
-            <p class="chapter__eyebrow"><span class="rule"></span>01 — Foundation</p>
-            <h1 class="chapter__title">Every home starts <em>from the ground&nbsp;up.</em></h1>
-            <p class="chapter__text">Survey, excavation and a foundation engineered for the land it sits on. What you never see is what we get right first.</p>
+            <p class="chapter__eyebrow"><span class="rule"></span>01 — Fondations</p>
+            <h1 class="chapter__title">Chaque maison commence <em>par des bases&nbsp;solides.</em></h1>
+            <p class="chapter__text">Arpentage, excavation et fondations conçues pour votre terrain. Ce qu’on ne voit jamais, on le fait bien en premier.</p>
           </article>
 
           <article class="chapter" data-stage="1">
-            <p class="chapter__eyebrow"><span class="rule"></span>02 — Framing</p>
-            <h2 class="chapter__title">Brick by brick, <em>floor by&nbsp;floor.</em></h2>
-            <p class="chapter__text">Walls rise exactly as drawn. Every opening, every level, checked before the next one begins.</p>
+            <p class="chapter__eyebrow"><span class="rule"></span>02 — Charpente</p>
+            <h2 class="chapter__title">Bloc par bloc, <em>étage par&nbsp;étage.</em></h2>
+            <p class="chapter__text">Les murs montent exactement comme sur les plans. Chaque ouverture, chaque niveau est vérifié avant de passer au suivant.</p>
           </article>
 
           <article class="chapter" data-stage="2">
-            <p class="chapter__eyebrow"><span class="rule"></span>03 — Roof &amp; structure</p>
-            <h2 class="chapter__title">Built <em>to&nbsp;last.</em></h2>
-            <p class="chapter__text">Structure, roof and envelope designed for real winters — not just for good photos.</p>
+            <p class="chapter__eyebrow"><span class="rule"></span>03 — Toiture et structure</p>
+            <h2 class="chapter__title">Bâtie <em>pour&nbsp;durer.</em></h2>
+            <p class="chapter__text">Structure, toiture et enveloppe pensées pour nos vrais hivers, pas seulement pour les photos.</p>
           </article>
 
           <article class="chapter" data-stage="3">
-            <p class="chapter__eyebrow"><span class="rule"></span>04 — Exterior</p>
-            <h2 class="chapter__title">Built to <em>the last&nbsp;detail.</em></h2>
-            <p class="chapter__text">Cladding, glazing and landscaping chosen as one composition, so the house looks finished from every angle.</p>
+            <p class="chapter__eyebrow"><span class="rule"></span>04 — Extérieur</p>
+            <h2 class="chapter__title">Soignée <em>jusqu’au moindre&nbsp;détail.</em></h2>
+            <p class="chapter__text">Revêtement, fenestration et aménagement paysager pensés comme un tout, pour une maison réussie sous tous les angles.</p>
           </article>
 
           <article class="chapter" data-stage="4">
-            <p class="chapter__eyebrow"><span class="rule"></span>05 — Entrance</p>
-            <h2 class="chapter__title">Step inside <em>your next&nbsp;chapter.</em></h2>
-            <p class="chapter__text">Warm light, generous thresholds and a first impression that feels like coming home.</p>
+            <p class="chapter__eyebrow"><span class="rule"></span>05 — Entrée</p>
+            <h2 class="chapter__title">Entrez dans <em>votre prochain&nbsp;chapitre.</em></h2>
+            <p class="chapter__text">Une lumière chaleureuse, une entrée généreuse et une première impression qui donne envie de rentrer chez soi.</p>
           </article>
 
           <article class="chapter" data-stage="5">
-            <p class="chapter__eyebrow"><span class="rule"></span>06 — Interior</p>
-            <h2 class="chapter__title">Spaces made <em>for the&nbsp;light.</em></h2>
-            <p class="chapter__text">Open plans, tall glazing and materials that age beautifully — designed around how you actually live.</p>
+            <p class="chapter__eyebrow"><span class="rule"></span>06 — Intérieur</p>
+            <h2 class="chapter__title">Des espaces <em>faits pour la&nbsp;lumière.</em></h2>
+            <p class="chapter__text">Aires ouvertes, grandes fenêtres et matériaux qui vieillissent bien, conçus autour de votre façon de vivre.</p>
           </article>
 
           <article class="chapter chapter--final" data-stage="6">
-            <p class="chapter__eyebrow"><span class="rule"></span>07 — Handover</p>
-            <h2 class="chapter__title">Welcome <em>home.</em></h2>
-            <p class="chapter__text">From bare land to the keys in your hand.</p>
+            <p class="chapter__eyebrow"><span class="rule"></span>07 — Remise des clés</p>
+            <h2 class="chapter__title">Bienvenue <em>chez&nbsp;vous.</em></h2>
+            <p class="chapter__text">Du terrain vierge jusqu’aux clés dans vos mains.</p>
             <div class="chapter__actions">
-              <a class="btn btn--primary" href="#quote">Get a free quote <span aria-hidden="true">→</span></a>
-              <a class="btn btn--ghost" href="#services">Our services</a>
+              <a class="btn btn--primary" href="#quote">Soumission gratuite <span aria-hidden="true">→</span></a>
+              <a class="btn btn--ghost" href="#services">Nos services</a>
             </div>
           </article>
         </div>
 
         <!-- Side progress bar (one button per stage) -->
-        <nav class="progress" aria-label="Construction stages">
+        <nav class="progress" aria-label="Étapes de la construction">
           <div class="progress__track" aria-hidden="true"><span class="progress__fill" id="progressFill"></span></div>
           <ol class="progress__list" id="progressList">
-            <li><button type="button" data-goto="0"><span class="progress__label">Foundation</span><span class="progress__num">01</span></button></li>
-            <li><button type="button" data-goto="1"><span class="progress__label">Framing</span><span class="progress__num">02</span></button></li>
-            <li><button type="button" data-goto="2"><span class="progress__label">Roof</span><span class="progress__num">03</span></button></li>
-            <li><button type="button" data-goto="3"><span class="progress__label">Exterior</span><span class="progress__num">04</span></button></li>
-            <li><button type="button" data-goto="4"><span class="progress__label">Entrance</span><span class="progress__num">05</span></button></li>
-            <li><button type="button" data-goto="5"><span class="progress__label">Interior</span><span class="progress__num">06</span></button></li>
-            <li><button type="button" data-goto="6"><span class="progress__label">Handover</span><span class="progress__num">07</span></button></li>
+            <li><button type="button" data-goto="0"><span class="progress__label">Fondations</span><span class="progress__num">01</span></button></li>
+            <li><button type="button" data-goto="1"><span class="progress__label">Charpente</span><span class="progress__num">02</span></button></li>
+            <li><button type="button" data-goto="2"><span class="progress__label">Toiture</span><span class="progress__num">03</span></button></li>
+            <li><button type="button" data-goto="3"><span class="progress__label">Extérieur</span><span class="progress__num">04</span></button></li>
+            <li><button type="button" data-goto="4"><span class="progress__label">Entrée</span><span class="progress__num">05</span></button></li>
+            <li><button type="button" data-goto="5"><span class="progress__label">Intérieur</span><span class="progress__num">06</span></button></li>
+            <li><button type="button" data-goto="6"><span class="progress__label">Remise des clés</span><span class="progress__num">07</span></button></li>
           </ol>
         </nav>
 
         <div class="scroll-hint" id="scrollHint" aria-hidden="true">
-          <span>Scroll to build</span><i></i>
+          <span>Défilez pour construire</span><i></i>
         </div>
       </div>
     </section>
@@ -125,71 +126,71 @@
     <section class="section services" id="services">
       <div class="section__head">
         <p class="eyebrow"><span class="rule"></span>Services</p>
-        <h2 class="section__title">One team, <em>from land to keys.</em></h2>
+        <h2 class="section__title">Une seule équipe, <em>du terrain aux clés.</em></h2>
       </div>
       <div class="services__grid">
         <article class="service">
           <span class="service__num">01</span>
-          <h3>Custom homes</h3>
-          <p>Design-build of your home from the first sketch to the final walkthrough, with one point of contact the whole way.</p>
+          <h3>Maisons sur mesure</h3>
+          <p>Conception et construction de votre maison, de la première esquisse à la visite finale, avec un seul interlocuteur du début à la fin.</p>
         </article>
         <article class="service">
           <span class="service__num">02</span>
-          <h3>Renovations &amp; additions</h3>
-          <p>Extensions, full remodels and new living spaces that blend with what already works in your home.</p>
+          <h3>Rénovations et agrandissements</h3>
+          <p>Agrandissements, rénovations complètes et nouveaux espaces de vie qui s’intègrent à ce qui fonctionne déjà chez vous.</p>
         </article>
         <article class="service">
           <span class="service__num">03</span>
-          <h3>Outdoor living</h3>
-          <p>Pools, terraces and landscaping designed with the house, so the outside feels like another room.</p>
+          <h3>Aménagements extérieurs</h3>
+          <p>Piscines, terrasses et aménagement paysager pensés avec la maison, pour que l’extérieur devienne une pièce de plus.</p>
         </article>
       </div>
     </section>
 
-    <!-- ============ QUOTE FORM (Netlify Forms) ============ -->
+    <!-- ============ FORMULAIRE DE SOUMISSION (Netlify Forms) ============ -->
     <section class="section quote" id="quote">
       <div class="quote__intro">
-        <p class="eyebrow"><span class="rule"></span>Free quote</p>
-        <h2 class="section__title">Let's build <em>yours.</em></h2>
-        <p class="quote__lead">Tell us about your land and your project. We get back to you with clear next steps and, if it's a fit, an on-site visit.</p>
+        <p class="eyebrow"><span class="rule"></span>Soumission gratuite</p>
+        <h2 class="section__title">Bâtissons <em>la vôtre.</em></h2>
+        <p class="quote__lead">Parlez-nous de votre terrain et de votre projet. Nous vous répondons avec des prochaines étapes claires et, si le projet nous convient à tous les deux, une visite sur place.</p>
         <ul class="quote__contact">
-          <li><span>Phone</span><a href="tel:+10000000000">[TÉLÉPHONE]</a></li>
-          <li><span>Email</span><a href="mailto:[COURRIEL]">[COURRIEL]</a></li>
-          <li><span>Area</span>[RÉGION DESSERVIE]</li>
+          <li><span>Téléphone</span><a href="tel:+10000000000">[TÉLÉPHONE]</a></li>
+          <li><span>Courriel</span><a href="mailto:[COURRIEL]">[COURRIEL]</a></li>
+          <li><span>Région</span>[RÉGION DESSERVIE]</li>
         </ul>
       </div>
 
       <form class="form" name="quote" method="POST" action="thanks.html" data-netlify="true" netlify-honeypot="company-website">
         <input type="hidden" name="form-name" value="quote">
-        <p class="form__hp" aria-hidden="true"><label>Leave empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
+        <p class="form__hp" aria-hidden="true"><label>Laisser vide <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
 
         <div class="form__row">
-          <label class="field"><span>Full name</span><input name="name" type="text" autocomplete="name" required></label>
-          <label class="field"><span>Phone</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel"></label>
+          <label class="field"><span>Nom complet</span><input name="name" type="text" autocomplete="name" required></label>
+          <label class="field"><span>Téléphone</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel"></label>
         </div>
-        <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+        <label class="field"><span>Courriel</span><input name="email" type="email" autocomplete="email" required></label>
         <div class="form__row">
-          <label class="field"><span>Project</span>
+          <label class="field"><span>Projet</span>
             <select name="project" required>
-              <option value="" disabled selected>Choose…</option>
-              <option>New custom home</option>
-              <option>Renovation / addition</option>
-              <option>Pool &amp; landscaping</option>
-              <option>Other</option>
+              <option value="" disabled selected>Choisir…</option>
+              <option>Maison neuve sur mesure</option>
+              <option>Rénovation ou agrandissement</option>
+              <option>Piscine et aménagement paysager</option>
+              <option>Autre</option>
             </select>
           </label>
-          <label class="field"><span>Timeline</span>
+          <label class="field"><span>Échéancier</span>
             <select name="timeline">
-              <option value="" selected>Not sure yet</option>
-              <option>Within 6 months</option>
-              <option>6–12 months</option>
-              <option>12 months +</option>
+              <option value="" selected>Pas encore défini</option>
+              <option>D’ici 6 mois</option>
+              <option>Dans 6 à 12 mois</option>
+              <option>Dans plus de 12 mois</option>
             </select>
           </label>
         </div>
-        <label class="field"><span>Tell us about your project</span><textarea name="message" rows="4"></textarea></label>
-        <button class="btn btn--primary form__submit" type="submit">Request my free quote <span aria-hidden="true">→</span></button>
-        <p class="form__note">No commitment. Your information stays with us.</p>
+        <label class="field"><span>Parlez-nous de votre projet</span><textarea name="message" rows="4"></textarea></label>
+        <button class="btn btn--primary form__submit" type="submit">Recevoir ma soumission gratuite <span aria-hidden="true">→</span></button>
+        <p class="form__note">Sans engagement. Vos informations restent confidentielles.</p>
       </form>
     </section>
   </main>
