@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>[NOM DE L'ENTREPRISE] — Cuisines haut de gamme sur mesure</title>
+  <meta name="description" content="[NOM DE L'ENTREPRISE] conçoit et réalise des cuisines haut de gamme sur mesure : armoires en bois, comptoirs de quartz, éclairage et finitions. Demandez votre soumission gratuite.">
+  <meta name="theme-color" content="#f4efe6">
+  <meta property="og:title" content="[NOM DE L'ENTREPRISE] — Cuisines haut de gamme sur mesure">
+  <meta property="og:description" content="De la pièce brute jusqu’au premier souper entre amis. Soumission gratuite.">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:type" content="website">
+  <!-- Remplacer par l'adresse COMPLÈTE une fois en ligne, ex. https://exemple.com/og.jpg -->
+  <meta property="og:image" content="og.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading">
+
+  <!-- ============ ÉCRAN DE CHARGEMENT ============ -->
+  <div class="loader" id="loader" role="status" aria-live="polite">
+    <div class="loader__inner">
+      <p class="loader__brand">[NOM DE L'ENTREPRISE]</p>
+      <p class="loader__count"><span id="loaderPct">0</span><small>%</small></p>
+      <div class="loader__bar" aria-hidden="true"><span id="loaderBar"></span></div>
+      <p class="loader__hint">On prend les mesures…</p>
+    </div>
+  </div>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#top" aria-label="[NOM DE L'ENTREPRISE], retour en haut">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 3.5h16v17H4zM4 10h16M12 10v10.5M9.5 6.5h5M9.5 13.5v2.5M14.5 13.5v2.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      <span>[NOM DE L'ENTREPRISE]</span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Navigation principale">
+      <a href="#cuisine">La réalisation</a>
+      <a href="#services">Services</a>
+      <a href="#soumission" class="nav__cta">Soumission gratuite</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks">
+      <span class="sr-only">Menu</span><i></i><i></i>
+    </button>
+  </header>
+
+  <main id="top">
+    <!-- ============ HISTOIRE AU DÉFILEMENT ============ -->
+    <section class="story" id="cuisine" aria-label="La réalisation, de la pièce brute à la cuisine finie">
+      <div class="story__sticky">
+        <canvas class="story__canvas" id="frames" aria-hidden="true"></canvas>
+        <div class="story__shade" aria-hidden="true"></div>
+
+        <div class="chapters">
+          <article class="chapter" data-stage="0">
+            <p class="chapter__eyebrow"><span class="rule"></span>01 — La pièce brute</p>
+            <h1 class="chapter__title">Tout commence par <em>une pièce&nbsp;vide.</em></h1>
+            <p class="chapter__text">Mesures précises, plans en 3D et choix des matériaux&nbsp;: votre cuisine est pensée avant le premier coup de marteau.</p>
+          </article>
+
+          <article class="chapter" data-stage="1">
+            <p class="chapter__eyebrow"><span class="rule"></span>02 — Plomberie et électricité</p>
+            <h2 class="chapter__title">Ce qu’on ne voit pas <em>doit être&nbsp;parfait.</em></h2>
+            <p class="chapter__text">Tuyauterie, filage et prises placés exactement là où vous cuisinerez. Tout est vérifié avant de refermer les murs.</p>
+          </article>
+
+          <article class="chapter" data-stage="2">
+            <p class="chapter__eyebrow"><span class="rule"></span>03 — Armoires sur mesure</p>
+            <h2 class="chapter__title">Façonnées <em>au&nbsp;millimètre.</em></h2>
+            <p class="chapter__text">Caissons et façades en chêne blanc, fabriqués sur mesure et ajustés à vos murs, pas l’inverse.</p>
+          </article>
+
+          <article class="chapter" data-stage="3">
+            <p class="chapter__eyebrow"><span class="rule"></span>04 — Quartz et dosseret</p>
+            <h2 class="chapter__title">Une seule dalle, <em>aucun&nbsp;compromis.</em></h2>
+            <p class="chapter__text">Îlot en cascade et dosseret pleine hauteur taillés dans la même pierre, pour des veines qui se suivent d’un bout à l’autre.</p>
+          </article>
+
+          <article class="chapter" data-stage="4">
+            <p class="chapter__eyebrow"><span class="rule"></span>05 — Électroménagers et éclairage</p>
+            <h2 class="chapter__title">La lumière, <em>au bon&nbsp;endroit.</em></h2>
+            <p class="chapter__text">Électroménagers encastrés, hotte sur mesure et éclairage sous les armoires&nbsp;: chaque élément trouve sa place.</p>
+          </article>
+
+          <article class="chapter" data-stage="5">
+            <p class="chapter__eyebrow"><span class="rule"></span>06 — Les détails</p>
+            <h2 class="chapter__title">Le luxe se sent <em>dans les&nbsp;détails.</em></h2>
+            <p class="chapter__text">Tiroirs à fermeture douce, quincaillerie noir mat, joints parfaitement alignés&nbsp;: ce que vous toucherez tous les jours.</p>
+          </article>
+
+          <article class="chapter chapter--final" data-stage="6">
+            <p class="chapter__eyebrow"><span class="rule"></span>07 — Votre cuisine</p>
+            <h2 class="chapter__title">Bienvenue dans <em>votre nouvelle&nbsp;cuisine.</em></h2>
+            <p class="chapter__text">De la pièce brute jusqu’au premier souper entre amis.</p>
+            <div class="chapter__actions">
+              <a class="btn btn--primary" href="#soumission">Soumission gratuite <span aria-hidden="true">→</span></a>
+              <a class="btn btn--ghost" href="#services">Nos services</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Barre de progression latérale (un bouton par étape) -->
+        <nav class="progress" aria-label="Étapes de la réalisation">
+          <div class="progress__track" aria-hidden="true"><span class="progress__fill" id="progressFill"></span></div>
+          <ol class="progress__list" id="progressList">
+            <li><button type="button" data-goto="0"><span class="progress__label">Pièce brute</span><span class="progress__num">01</span></button></li>
+            <li><button type="button" data-goto="1"><span class="progress__label">Plomberie</span><span class="progress__num">02</span></button></li>
+            <li><button type="button" data-goto="2"><span class="progress__label">Armoires</span><span class="progress__num">03</span></button></li>
+            <li><button type="button" data-goto="3"><span class="progress__label">Quartz</span><span class="progress__num">04</span></button></li>
+            <li><button type="button" data-goto="4"><span class="progress__label">Éclairage</span><span class="progress__num">05</span></button></li>
+            <li><button type="button" data-goto="5"><span class="progress__label">Détails</span><span class="progress__num">06</span></button></li>
+            <li><button type="button" data-goto="6"><span class="progress__label">Votre cuisine</span><span class="progress__num">07</span></button></li>
+          </ol>
+        </nav>
+
+        <div class="scroll-hint" id="scrollHint" aria-hidden="true">
+          <span>Défilez pour rénover</span><i></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="section services" id="services">
+      <div class="section__head">
+        <p class="eyebrow"><span class="rule"></span>Services</p>
+        <h2 class="section__title">De la conception <em>à la dernière poignée.</em></h2>
+      </div>
+      <div class="services__grid">
+        <article class="service">
+          <span class="service__num">01</span>
+          <h3>Cuisines sur mesure</h3>
+          <p>Conception, plans en 3D, armoires, comptoirs et installation&nbsp;: une seule équipe, un seul interlocuteur du premier croquis à la dernière poignée.</p>
+        </article>
+        <article class="service">
+          <span class="service__num">02</span>
+          <h3>Salles de bain</h3>
+          <p>Vanités sur mesure, douches en céramique et rangements intégrés, avec le même souci du détail que dans nos cuisines.</p>
+        </article>
+        <article class="service">
+          <span class="service__num">03</span>
+          <h3>Ébénisterie et meubles intégrés</h3>
+          <p>Bibliothèques, garde-robes, meubles-télé et banquettes fabriqués pour s’intégrer parfaitement à vos pièces.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ FORMULAIRE DE SOUMISSION (Netlify Forms) ============ -->
+    <section class="section quote" id="soumission">
+      <div class="quote__intro">
+        <p class="eyebrow"><span class="rule"></span>Soumission gratuite</p>
+        <h2 class="section__title">Parlons de <em>votre cuisine.</em></h2>
+        <p class="quote__lead">Décrivez-nous votre projet. Nous vous répondons avec les prochaines étapes et, si le projet nous convient à tous les deux, une visite pour prendre les mesures.</p>
+        <ul class="quote__contact">
+          <li><span>Téléphone</span><a href="tel:+10000000000">[TÉLÉPHONE]</a></li>
+          <li><span>Courriel</span><a href="mailto:[COURRIEL]">[COURRIEL]</a></li>
+          <li><span>Région</span>[RÉGION DESSERVIE]</li>
+        </ul>
+      </div>
+
+      <form class="form" name="soumission" method="POST" action="merci.html" data-netlify="true" netlify-honeypot="site-web-entreprise">
+        <input type="hidden" name="form-name" value="soumission">
+        <p class="form__hp" aria-hidden="true"><label>Laisser vide <input name="site-web-entreprise" tabindex="-1" autocomplete="off"></label></p>
+
+        <div class="form__row">
+          <label class="field"><span>Nom complet</span><input name="nom" type="text" autocomplete="name" required></label>
+          <label class="field"><span>Téléphone</span><input name="telephone" type="tel" autocomplete="tel" inputmode="tel"></label>
+        </div>
+        <label class="field"><span>Courriel</span><input name="courriel" type="email" autocomplete="email" required></label>
+        <div class="form__row">
+          <label class="field"><span>Projet</span>
+            <select name="projet" required>
+              <option value="" disabled selected>Choisir…</option>
+              <option>Cuisine complète sur mesure</option>
+              <option>Rafraîchissement (portes, comptoirs, dosseret)</option>
+              <option>Salle de bain</option>
+              <option>Ébénisterie ou meuble intégré</option>
+              <option>Autre</option>
+            </select>
+          </label>
+          <label class="field"><span>Budget approximatif</span>
+            <select name="budget">
+              <option value="" selected>Je ne sais pas encore</option>
+              <option>Moins de 30&nbsp;000&nbsp;$</option>
+              <option>30&nbsp;000 à 60&nbsp;000&nbsp;$</option>
+              <option>60&nbsp;000 à 100&nbsp;000&nbsp;$</option>
+              <option>Plus de 100&nbsp;000&nbsp;$</option>
+            </select>
+          </label>
+        </div>
+        <label class="field"><span>Échéancier</span>
+          <select name="echeancier">
+            <option value="" selected>Pas encore défini</option>
+            <option>D’ici 3 mois</option>
+            <option>Dans 3 à 6 mois</option>
+            <option>Dans plus de 6 mois</option>
+          </select>
+        </label>
+        <label class="field"><span>Parlez-nous de votre projet</span><textarea name="message" rows="4" placeholder="Dimensions de la pièce, style recherché, électroménagers à conserver…"></textarea></label>
+        <button class="btn btn--primary form__submit" type="submit">Recevoir ma soumission gratuite <span aria-hidden="true">→</span></button>
+        <p class="form__note">Sans engagement. Vos informations restent confidentielles.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year">2026</span> [NOM DE L'ENTREPRISE]</p>
+    <p>Licence RBQ&nbsp;: [NUMÉRO DE LICENCE RBQ]</p>
+  </footer>
+
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
