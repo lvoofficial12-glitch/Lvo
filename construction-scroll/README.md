@@ -5,7 +5,7 @@ Site d'une page pour une entreprise de construction haut de gamme. Quand le visi
 - HTML/CSS/JS pur, aucune étape de compilation.
 - GSAP 3.12.5 + ScrollTrigger, inclus localement dans `js/vendor/` (aucun CDN).
 - Prêt pour Netlify, avec un formulaire de devis qui fonctionne via Netlify Forms.
-- Les images actuelles sont des **images provisoires** générées par script. Remplace-les par les tiennes (voir plus bas).
+- Les images actuelles viennent de **7 images clés photoréalistes générées par IA** (Higgsfield, GPT Image), une par étape. Le script `tools/build_frames.py` les transforme en séquence de 120 images (zoom lent, fondus, entrée dans la maison). Pour mettre tes propres images, voir plus bas.
 
 ---
 
@@ -21,7 +21,9 @@ construction-scroll/
 ├── js/vendor/            ← GSAP + ScrollTrigger
 ├── frames/               ← images ORDINATEUR (paysage) frame_001.webp …
 │   └── mobile/           ← images MOBILE (portrait) frame_001.webp …
-├── tools/generate_placeholders.py   ← génère les images provisoires
+├── tools/keyframes/      ← les 7 images clés (stage1.jpg … stage7.jpg)
+├── tools/build_frames.py ← fabrique la séquence à partir des 7 images clés
+├── og.jpg                ← image de partage (réseaux sociaux)
 ├── netlify.toml          ← configuration Netlify (cache, en-têtes)
 └── favicon.svg
 ```
@@ -103,7 +105,7 @@ ffmpeg -i maison.mp4 -vf "fps=24,crop=ih*9/16:ih,scale=720:1280" \
   -c:v libwebp -quality 72 -compression_level 6 frames/mobile/frame_%03d.webp
 ```
 
-Supprime d'abord les anciennes images (`frames/*.webp` et `frames/mobile/*.webp`). Sinon des images provisoires en trop resteraient à la fin de la séquence.
+Supprime d'abord les anciennes images (`frames/*.webp` et `frames/mobile/*.webp`). Sinon des anciennes images en trop resteraient à la fin de la séquence.
 
 Calcul du nombre d'images : durée de la vidéo × fps. Par exemple, 6 s × 24 fps = 144 images.
 
@@ -147,19 +149,30 @@ Autres réglages :
 - **Services** : la section `#services`. Les 3 services sont des exemples génériques à adapter.
 - **Couleurs et polices** : variables en haut de `css/style.css` (`--gold`, `--cta`, `--serif`, `--sans`…).
 - **Longueur du défilement** : `--story-length: 820vh` dans `css/style.css`. Plus grand = construction plus lente.
-- **Image de partage** (`og:image`) : mets l'adresse **complète** d'une image JPG 1200 × 630 (ex. `https://tonsite.com/partage.jpg`). Certains réseaux n'affichent pas le WebP ni les chemins relatifs.
+- **Image de partage** (`og:image`) : `og.jpg` (1200 × 630) est fournie. Une fois le site en ligne, remplace `og.jpg` par son adresse **complète** (ex. `https://tonsite.com/og.jpg`), car les réseaux sociaux ne lisent pas les chemins relatifs.
 
 ---
 
-## Images provisoires
+## Les images actuelles (7 images clés → séquence)
 
-Elles sont générées par `tools/generate_placeholders.py` (Python 3, Pillow, numpy) :
+Sans vidéo, la séquence est fabriquée à partir de **7 images fixes**, une par étape :
+- Les étapes 1 à 4 et 7 utilisent exactement le même angle de caméra. Le fondu de l'une à l'autre donne l'effet « la maison se construit ».
+- Les étapes 5 (entrée) et 6 (intérieur) sont amenées par un zoom vers la porte, comme si on entrait dans la maison.
+- Sur mobile, toute la maison reste visible en haut de l'écran, avec un dégradé sombre derrière le texte.
+
+Pour changer ces images sans passer par une vidéo :
+1. Remplace `tools/keyframes/stage1.jpg` … `stage7.jpg` (format 16:9, même cadrage pour 1-4 et 7).
+2. Si la maison n'est pas au même endroit, ajuste les points de zoom en haut de `tools/build_frames.py` (`HOUSE`, `DOOR_ON_EXTERIOR`, `OPEN_DOOR`, `INTERIOR`, `MOBILE_CX`).
+3. Lance le script (Python 3 + Pillow), puis augmente `version` dans `js/main.js` :
 
 ```bash
-pip install pillow numpy
-python3 tools/generate_placeholders.py              # les deux jeux d'images
-python3 tools/generate_placeholders.py --only desktop
+pip install pillow
+python3 tools/build_frames.py
 ```
+
+Poids actuel : environ 11 Mo pour la version ordinateur (1280 × 720) et 3 Mo pour la version mobile (540 × 960). Pour alléger, baisse `--quality` (ex. `--quality 55`).
+
+**Important pour un vrai client** : ces images sont générées par IA, ce ne sont pas des photos de projets réels. Sur le site d'un entrepreneur, ne les présente pas comme ses réalisations. Remplace-les par des photos ou vidéos de ses chantiers, ou indique clairement qu'il s'agit d'illustrations.
 
 Le dossier `tools/` n'est pas nécessaire au site. Netlify le bloque (`netlify.toml`) et tu peux le supprimer.
 

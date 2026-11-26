@@ -18,7 +18,7 @@ const CONFIG = {
 
   // Change this (2, 3, …) every time you replace the frames after launch,
   // so returning visitors don't see old cached images.
-  version: '1',
+  version: '2',
 
   // First frame of each of the 7 stages (1-based). Must be increasing.
   // 1 Foundation, 2 Framing, 3 Roof, 4 Exterior, 5 Entrance, 6 Interior, 7 Pool
@@ -260,13 +260,13 @@ const CONFIG = {
         tl.fromTo(parts,
           { autoAlpha: 0, y: lift },
           { autoAlpha: 1, y: 0, duration: L * 0.2, stagger: L * 0.035, ease: 'power2.out' },
-          a + L * 0.08);
+          a + L * 0.05);
       }
       if (i < lastStage) {
         tl.fromTo(parts,
           { autoAlpha: 1, y: 0 },
           { autoAlpha: 0, y: -lift * 0.7, duration: L * 0.15, stagger: L * 0.02, ease: 'power2.in', immediateRender: false },
-          b - L * 0.24);
+          b - L * 0.3);
       }
     });
 
