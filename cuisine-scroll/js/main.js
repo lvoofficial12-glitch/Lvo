@@ -4,7 +4,7 @@
    ========================================================= */
 const CONFIG = {
   // Total number of images in /frames (frame_001.webp … frame_120.webp)
-  frameCount: 242,
+  frameCount: 350,
 
   // Landscape frames (desktop, tablets in landscape)
   desktopPath: 'frames/',
@@ -18,11 +18,11 @@ const CONFIG = {
 
   // Change this (2, 3, …) every time you replace the frames after launch,
   // so returning visitors don't see old cached images.
-  version: '2',
+  version: '3',
 
   // First frame of each of the 7 stages (1-based). Must be increasing.
   // 1 Pièce brute, 2 Plomberie/électricité, 3 Armoires, 4 Quartz, 5 Électroménagers/éclairage, 6 Détails, 7 Soirée
-  stageStartFrames: [1, 13, 39, 67, 83, 125, 192],
+  stageStartFrames: [1, 19, 58, 101, 125, 186, 277],
 
   // Smoothing of the scroll in seconds (0 = instant, 1 = very soft).
   // Keep it low so the picture follows the hand: higher values feel like a video catching up.
