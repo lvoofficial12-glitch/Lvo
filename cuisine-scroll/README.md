@@ -83,7 +83,7 @@ python3 -m http.server 8000
 - **Services** : section `#services` (cuisines sur mesure, salles de bain, ébénisterie et meubles intégrés).
 - **Formulaire** : type de projet, budget approximatif, échéancier. Adapte les tranches de budget au marché du client.
 - **Couleurs et polices** : variables en haut de `css/style.css` (`--bg`, `--gold` = chêne, `--cta` = noir mat, `--veil`, `--serif`, `--sans`). Le style du texte sur la vidéo en écran paysage est dans le bloc `@media (min-aspect-ratio: 9/10)`.
-- **Longueur du défilement** : `--story-length: 1100vh` dans `css/style.css`.
+- **Longueur du défilement** : `--story-length: 600vh` (environ 6 hauteurs d’écran) dans `css/style.css`.
 - **Image de partage** : une fois en ligne, mets l’adresse complète de `og.jpg` dans `og:image`.
 
 ## Remplacer les images
