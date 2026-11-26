@@ -1,4 +1,8 @@
-# Outil Reel « site qui défile sur un MacBook »
+# Outil Reel « site qui défile sur un MacBook » — version cuisine
+
+Copie de `../outil-reel/` réglée pour `cuisine-scroll` (voir `config.json`). Résultat : `../reel-cuisine-scroll.mp4`.
+Pour refaire les images 24 i/s : `./images_hd.sh ../sources-cuisine/01-cuisine-construction.mp4 ../sources-cuisine/02-cuisine-details-soiree.mp4` (724 images).
+Débuts d’étapes du site : 1, 13, 39, 67, 83, 125, 192 → `debut_etapes` : 1, 37, 115, 199, 247, 373, 574.
 
 Fabrique une vidéo verticale (1080 × 1920, 60 i/s, 15 s) où un site au défilement s'affiche sur l'écran d'un vrai MacBook, posé sur un bureau, et défile comme si quelqu'un utilisait le trackpad :
 - élans puis pauses sur chaque texte, avec un petit retour en arrière ;
