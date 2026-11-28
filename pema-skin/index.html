@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pema Skin Montréal</title>
+<meta name="description" content="Pema Skin, studio privé de soins du visage à Montréal (Hochelaga-Maisonneuve). Massage liftant, drainage lymphatique, peelings et cures correctives par Gracia, facialiste.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE  occasion, luxe and tender: a private facial studio speaking in "vous"
+   IDEA   a bottle of rose serum: everything glows, drips and melts in soft pink
+   PICTURE full-screen film of facials with a realistic 3D glass serum bottle floating over it
+   COLOUR blush #FFEFF1 ground, rose #F3C4CC, deep rose #C24E6B accent, plum #2B0F1B night, plum ink #3A1724
+   TYPE   Cormorant (display serif) + Manrope (text)
+   LAYOUT laptop: film full-bleed, title bottom-left, bottle right; phone: title over film, bottle above it */
+:root{color-scheme:light;--bg:#FFEFF1;--blush:#FADCE1;--rose:#F3C4CC;--rose2:#E7A1AE;--deep:#C24E6B;--berry:#8E2D4A;--ink:#3A1724;--soft:#7A4E5C;--night:#2B0F1B;--cream:#FFF8F7;--line:rgba(58,23,36,.14);--r:24px;--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:84px}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Manrope,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:Cormorant,Georgia,serif;font-weight:300;letter-spacing:-.02em;line-height:1.02;margin:0;text-wrap:balance}
+h2{font-size:clamp(42px,5.6vw,76px)}
+h3{font-size:30px;font-weight:400}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(5vw,18px)}
+.band{padding-block:clamp(84px,10vw,150px);position:relative}
+.lead{font-size:18px;color:var(--soft);max-width:34em}
+.kick{font-size:14px;color:var(--deep);font-weight:600;margin-bottom:18px;display:block}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 32px;border-radius:999px;font:500 15px Manrope,sans-serif;text-decoration:none;border:1px solid var(--ink);overflow:hidden;isolation:isolate;white-space:nowrap;transition:color .45s var(--ease),border-color .45s;cursor:pointer}
+.btn::before{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--deep);transform:translateY(101%);transition:transform .55s var(--ease);z-index:-1}
+.btn:hover::before{transform:none}
+.btn.dark{background:var(--ink);color:var(--cream)}
+.btn.dark:hover,.btn.ghost:hover,.btn.light:hover,.btn.glass:hover{border-color:var(--deep);color:#fff}
+.btn.light{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.btn.rose{background:var(--deep);color:#fff;border-color:var(--deep)}
+.btn.rose::before{background:var(--ink)}
+.btn.glass{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--deep);outline-offset:3px}
+
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.9}
+.grain{position:fixed;inset:0;z-index:70;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* cursor */
+.cur{position:fixed;left:0;top:0;width:14px;height:18px;margin:-9px 0 0 -7px;z-index:200;pointer-events:none;display:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 18'%3E%3Cpath d='M7 0C7 0 0 8 0 11.5A7 7 0 0 0 14 11.5C14 8 7 0 7 0Z' fill='%23C24E6B'/%3E%3C/svg%3E") center/contain no-repeat;transition:opacity .3s}
+.cring{position:fixed;left:0;top:0;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:1.5px solid rgba(194,78,107,.7);z-index:199;pointer-events:none;display:none;place-items:center;color:#fff;font:600 13px Manrope,sans-serif;transition:width .45s var(--ease),height .45s var(--ease),margin .45s var(--ease),background .45s,border-color .45s;mix-blend-mode:normal}
+.cring span{opacity:0;transition:opacity .3s}
+.cring.link{width:70px;height:70px;margin:-35px 0 0 -35px;background:rgba(194,78,107,.18);border-color:transparent}
+.cring.big{width:96px;height:96px;margin:-48px 0 0 -48px;background:var(--deep);border-color:var(--deep)}
+.cring.big span{opacity:1}
+.cur.hide{opacity:0}
+@media(hover:hover) and (pointer:fine){.cur{display:block}.cring{display:grid}html.cur-on,html.cur-on *{cursor:none!important}}
+
+/* preloader */
+.pre{position:fixed;inset:0;z-index:100;background:var(--night);color:var(--cream);display:grid;place-items:center;transition:clip-path 1.2s var(--ease);clip-path:inset(0 0 0 0)}
+.pre.done{clip-path:inset(0 0 100% 0)}
+.pre .in{text-align:center}
+.pre .drop{width:34px;height:46px;margin:0 auto 26px;display:block}
+.pre .drop path{fill:var(--rose2);transform-origin:50% 0;animation:drip 1.6s var(--ease) infinite}
+@keyframes drip{0%{transform:scale(.2) translateY(-20px);opacity:0}40%{opacity:1}100%{transform:scale(1) translateY(6px);opacity:1}}
+.pre .w{font:300 clamp(48px,9vw,96px)/1 Cormorant,serif;overflow:hidden}
+.pre .w span{display:inline-block;transform:translateY(105%);animation:up 1s var(--ease) .2s forwards}
+.pre .bar{width:180px;height:1px;background:rgba(255,255,255,.15);margin:26px auto 0;position:relative}
+.pre .bar i{position:absolute;inset:0;background:var(--rose2);transform-origin:left;transform:scaleX(0)}
+@keyframes up{to{transform:none}}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:60;transition:background .4s,box-shadow .4s,transform .5s var(--ease),color .4s;color:#fff}
+.nav.on{background:rgba(255,239,241,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--line);color:var(--ink)}
+.nav.hide{transform:translateY(-100%)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:80px;gap:20px}
+.logo{font:500 28px Cormorant,serif;text-decoration:none;display:flex;align-items:center;gap:10px;letter-spacing:.02em}
+.logo svg{width:18px;height:24px}
+.links{display:flex;gap:30px;font-size:15px}
+.links a{text-decoration:none;position:relative}
+.links a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:1px;background:currentColor;transition:right .4s var(--ease)}
+.links a:hover::after{right:0}
+.nav .btn{min-height:46px;padding:0 24px;border-color:currentColor;background:transparent;color:inherit}
+.burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;padding:10px;color:inherit}
+.burger span{display:block;height:1.5px;background:currentColor;margin:6px 0;transition:transform .3s,opacity .3s}
+@media(max-width:900px){.links{display:none}.burger{display:block}.nav .btn{display:none}
+.nav.open{background:var(--bg);color:var(--ink)}
+.nav.open .links{display:flex;position:fixed;inset:80px 0 auto;flex-direction:column;background:var(--bg);padding:28px max(5vw,18px) 40px;font:300 36px Cormorant,serif;gap:14px;box-shadow:0 20px 40px rgba(0,0,0,.08)}
+.nav.open .burger span:first-child{transform:translateY(7.5px) rotate(45deg)}.nav.open .burger span:nth-child(2){opacity:0}.nav.open .burger span:last-child{transform:translateY(-7.5px) rotate(-45deg)}}
+
+.lang{display:inline-grid;place-items:center;min-width:46px;height:46px;border:1px solid currentColor;border-radius:999px;font:600 13px Manrope,sans-serif;text-decoration:none;letter-spacing:.05em;transition:background .3s,color .3s}
+.lang:hover{background:var(--deep);border-color:var(--deep);color:#fff}
+@media(max-width:900px){.nav .wrap{gap:10px}.lang{margin-left:auto}}
+/* floating book */
+.fab{position:fixed;right:max(2vw,14px);bottom:max(2vw,14px);z-index:65;display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:0 24px 0 18px;border-radius:999px;background:var(--deep);color:#fff;text-decoration:none;font:600 15px Manrope,sans-serif;box-shadow:0 18px 40px -14px rgba(142,45,74,.7);transform:translateY(140%);transition:transform .7s var(--ease),background .3s}
+.fab.on{transform:none}
+.fab:hover{background:var(--ink)}
+.fab i{width:10px;height:10px;border-radius:50%;background:#fff;position:relative}
+.fab i::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid #fff;animation:ring 1.8s ease-out infinite}
+@keyframes ring{from{transform:scale(.4);opacity:1}to{transform:scale(1.6);opacity:0}}
+
+/* split text */
+.sp{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+.sp>i{display:inline-block;font-style:inherit;will-change:transform}
+
+/* hero */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;color:#fff;background:var(--night)}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 50%}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(43,15,27,.78) 0%,rgba(43,15,27,.35) 48%,rgba(43,15,27,.05) 75%),linear-gradient(0deg,rgba(43,15,27,.7),transparent 45%),linear-gradient(180deg,rgba(43,15,27,.45),transparent 25%);z-index:1}
+.hero .tint{position:absolute;inset:0;background:radial-gradient(60% 70% at 78% 45%,rgba(243,196,204,.35),transparent 70%);mix-blend-mode:soft-light;z-index:1}
+#gl{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.hero .wrap{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(48px,8vh,96px)}
+.hero .kick{color:var(--rose)}
+.hero h1{font-size:clamp(58px,9vw,140px);line-height:.94;max-width:8.5em}
+.hero h1 em{font-style:italic;color:var(--rose)}
+.hero .lead{color:rgba(255,255,255,.86);margin:26px 0 34px;max-width:31em}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero .meta{position:absolute;right:max(5vw,18px);bottom:clamp(48px,8vh,96px);z-index:3;display:flex;gap:30px;font-size:13.5px;color:rgba(255,255,255,.75);text-align:right}
+.hero .meta b{display:block;font:400 32px/1.1 Cormorant,serif;color:#fff}
+.sound{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:3;font-size:12px;color:rgba(255,255,255,.7);display:flex;flex-direction:column;align-items:center;gap:8px}
+.sound i{width:1px;height:40px;background:linear-gradient(#fff,transparent);animation:line 2.4s ease-in-out infinite;transform-origin:top}
+@keyframes line{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+@media(max-width:1000px){.hero .meta{display:none}}
+@media(max-width:600px){.hero .wrap{padding-bottom:40px}.sound{display:none}.hero .shade{background:linear-gradient(0deg,rgba(43,15,27,.85) 10%,rgba(43,15,27,.25) 60%,rgba(43,15,27,.35))}}
+
+/* marquee */
+.marq{overflow:hidden;padding:30px 0;background:var(--deep);color:#fff}
+.marq .row{display:flex;width:max-content;font:300 clamp(34px,4.6vw,64px)/1.1 Cormorant,serif;white-space:nowrap;will-change:transform}
+.marq .row span{padding-right:54px;display:inline-flex;align-items:center;gap:54px}
+.marq .row span::after{content:"";width:14px;height:18px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 18'%3E%3Cpath d='M7 0C7 0 0 8 0 11.5A7 7 0 0 0 14 11.5C14 8 7 0 7 0Z' fill='%23F3C4CC'/%3E%3C/svg%3E") center/contain no-repeat}
+.marq .row.b{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.7);margin-top:8px}
+
+/* stacking panels */
+.stackz{position:relative}
+.layer{position:sticky;top:0;min-height:100svh;display:flex;align-items:center;border-radius:44px 44px 0 0;overflow:hidden;box-shadow:0 -30px 60px -30px rgba(58,23,36,.35);transform-origin:50% 0}
+.layer>.wrap{width:100%;padding-block:clamp(90px,10vh,130px)}
+.layer.l1{background:var(--bg)}
+.layer.l2{background:var(--night);color:var(--cream)}
+.layer.l3{background:var(--rose)}
+@media(max-width:860px){.layer{position:relative;min-height:0;border-radius:32px 32px 0 0}}
+
+/* equation */
+.eq{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:22px;align-items:center;margin-top:56px;perspective:1200px}
+.eq .t{background:#fff;border-radius:var(--r);padding:36px 30px;min-height:240px;display:flex;flex-direction:column;justify-content:space-between;transform-origin:50% 100%;box-shadow:0 30px 60px -40px rgba(142,45,74,.4)}
+.eq .t b{font:300 48px Cormorant,serif;line-height:1}
+.eq .t p{color:var(--soft);font-size:15px;margin-top:18px}
+.eq .op{font:300 62px Cormorant,serif;color:var(--deep)}
+.eq .t.res{background:linear-gradient(150deg,var(--deep),var(--berry));color:#fff}
+.eq .t.res p{color:rgba(255,255,255,.82)}
+@media(max-width:860px){.eq{grid-template-columns:1fr}.eq .op{text-align:center;line-height:.6}.eq .t{min-height:0}}
+
+/* manifesto */
+.l2 p.big{font:300 clamp(40px,6vw,86px)/1.08 Cormorant,serif;letter-spacing:-.02em;max-width:13em}
+.l2 p.big .w{color:rgba(255,248,247,.15);transition:color .25s}
+.l2 p.big .w.on{color:var(--cream)}
+.l2 p.big .w.r.on{color:var(--rose2);font-style:italic}
+.l2 .sig{margin-top:40px;color:rgba(255,248,247,.6);display:flex;gap:16px;align-items:center}
+.l2 .sig::before{content:"";width:48px;height:1px;background:var(--rose2)}
+.l2 .portrait{position:absolute;right:max(5vw,18px);top:50%;transform:translateY(-50%);width:min(30vw,380px);aspect-ratio:3/4;border-radius:200px 200px 24px 24px;overflow:hidden;opacity:.9}
+.l2 .portrait img{width:100%;height:120%;object-fit:cover}
+@media(min-width:1001px){.l2 .wrap{padding-right:calc(max(5vw,18px) + min(30vw,380px) + 40px)}}
+@media(max-width:1000px){.l2 .portrait{display:none}}
+
+/* offer */
+.offer{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,5vw,80px);align-items:center}
+.offer .price{font:300 clamp(80px,11vw,150px)/1 Cormorant,serif;margin:16px 0 4px;display:flex;align-items:baseline;gap:14px;color:var(--berry)}
+.offer .price small{font:500 16px Manrope,sans-serif;color:var(--ink)}
+.offer ul{list-style:none;padding:0;margin:24px 0 32px;display:grid;gap:12px}
+.offer li{display:flex;gap:12px}
+.offer li::before{content:"";flex:none;width:10px;height:13px;margin-top:6px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 18'%3E%3Cpath d='M7 0C7 0 0 8 0 11.5A7 7 0 0 0 14 11.5C14 8 7 0 7 0Z' fill='%23C24E6B'/%3E%3C/svg%3E") center/contain no-repeat}
+.offer .note{font-size:13.5px;color:var(--soft);margin-top:18px}
+.offer .pics{position:relative;aspect-ratio:1/1.05}
+.offer .pics div{position:absolute;border-radius:var(--r);overflow:hidden;box-shadow:0 40px 70px -40px rgba(58,23,36,.6)}
+.offer .pics .p1{inset:0 25% 18% 0}
+.offer .pics .p2{inset:35% 0 0 40%;border:8px solid var(--rose)}
+.offer .pics img{width:100%;height:120%;object-fit:cover}
+@media(max-width:860px){.offer{grid-template-columns:1fr}.offer .pics{max-width:520px}}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,6vw,96px);align-items:center}
+.arch{position:relative;aspect-ratio:4/5.2;max-width:480px}
+.arch .ph{position:absolute;inset:0;border-radius:999px 999px 24px 24px;overflow:hidden}
+.arch .ph img{width:100%;height:120%;object-fit:cover}
+.arch .ring{position:absolute;inset:-16px;border:1px solid var(--rose2);border-radius:999px 999px 36px 36px}
+.badge{position:absolute;right:-30px;bottom:12%;width:140px;height:140px;animation:spin 22s linear infinite;z-index:2}
+.badge text{font:600 11.5px Manrope,sans-serif;letter-spacing:.2em;fill:var(--ink)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.about .lead{margin:24px 0}
+.quote{font:italic 300 clamp(28px,3vw,38px)/1.2 Cormorant,serif;border-left:1px solid var(--deep);padding-left:22px;margin:30px 0;color:var(--berry)}
+.marks{display:flex;flex-wrap:wrap;gap:10px}
+.marks span{border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px;background:rgba(255,255,255,.55)}
+@media(max-width:860px){.about{grid-template-columns:1fr}.badge{right:-6px;width:110px;height:110px}}
+
+/* menu: flip cards */
+.head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:44px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tabs button{font:500 14.5px Manrope,sans-serif;border:1px solid var(--line);background:rgba(255,255,255,.6);color:var(--ink);border-radius:999px;min-height:44px;padding:0 20px;cursor:pointer;transition:background .35s,color .35s,border-color .35s}
+.tabs button[aria-selected=true]{background:var(--deep);color:#fff;border-color:var(--deep)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+.flip{perspective:1400px;height:480px;animation:cardIn 1s var(--ease) both}
+@keyframes cardIn{from{opacity:0;transform:translateY(50px) rotateX(-18deg)}}
+.flip .in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 1s var(--ease);cursor:pointer}
+.flip:hover .in,.flip.on .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;border-radius:var(--r);overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.flip .f img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.flip .f::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(43,15,27,.85),rgba(43,15,27,.1) 55%)}
+.flip .f .txt{position:absolute;left:24px;right:24px;bottom:24px;z-index:2;color:#fff}
+.flip .f .tag{position:absolute;left:18px;top:18px;z-index:2;font-size:12.5px;font-weight:600;background:rgba(255,255,255,.9);color:var(--ink);border-radius:999px;padding:6px 12px}
+.flip .f h3{font-size:34px;color:#fff}
+.flip .f .row{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;gap:12px}
+.flip .f .pr{font:400 30px Cormorant,serif;white-space:nowrap}
+.flip .f .du{font-size:13.5px;opacity:.85;white-space:nowrap}
+.flip .f .hint{font-size:12.5px;opacity:.7;margin-top:10px}
+.flip .b{transform:rotateY(180deg);background:linear-gradient(160deg,var(--deep),var(--berry));color:#fff;padding:32px 28px;display:flex;flex-direction:column;gap:16px}
+.flip .b h3{color:#fff;font-size:32px}
+.flip .b p{color:rgba(255,255,255,.88);font-size:15.5px}
+.flip .b .inc{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto}
+.flip .b .inc span{font-size:12.5px;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:5px 12px}
+.flip .b .row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.flip .b .pr{font:400 34px Cormorant,serif}
+.flip .b .btn{min-height:48px;padding:0 22px}
+@media(max-width:640px){.flip{height:440px}}
+
+/* ritual pinned horizontal */
+.ritual{background:var(--night);color:var(--cream);overflow:hidden}
+.ritual .top{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;padding-top:clamp(70px,8vw,110px)}
+.ritual h2{color:var(--cream);max-width:12em}
+.ritual .kick{color:var(--rose2)}
+.prog{height:1px;background:rgba(255,255,255,.15);margin-top:34px;position:relative}
+.prog i{position:absolute;inset:0;background:var(--rose2);transform-origin:left;transform:scaleX(0)}
+.hscroll{display:flex;gap:28px;padding:44px max(5vw,18px) clamp(70px,8vw,110px);width:max-content;will-change:transform}
+.panel{width:min(76vw,840px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:34px;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:calc(var(--r)*1.4);padding:22px}
+.panel .pi{aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;max-height:62vh}
+.panel .pi img{width:100%;height:100%;object-fit:cover}
+.panel .st{font:300 66px/1 Cormorant,serif;color:var(--rose2);font-style:italic}
+.panel h3{color:var(--cream);font-size:36px;margin:14px 0}
+.panel p{color:rgba(255,248,247,.72)}
+.panel .bt{margin-top:26px}
+@media(max-width:860px){.hscroll{width:auto;flex-direction:column;padding-inline:max(5vw,18px)}.panel{width:auto;grid-template-columns:1fr}.panel .pi{aspect-ratio:16/11}.panel .st{font-size:50px}}
+
+/* before / after */
+.ba{position:relative;aspect-ratio:16/9;border-radius:calc(var(--r)*1.4);overflow:hidden;user-select:none;touch-action:pan-y;box-shadow:0 40px 80px -50px rgba(58,23,36,.6);--x:50%}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba .after{clip-path:inset(0 0 0 var(--x))}
+.ba .line{position:absolute;top:0;bottom:0;left:var(--x);width:2px;background:#fff;transform:translateX(-1px)}
+.ba .knob{position:absolute;top:50%;left:var(--x);width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);color:var(--deep);font-size:20px;cursor:ew-resize}
+.ba .lb{position:absolute;top:18px;font-size:13px;font-weight:600;background:rgba(255,255,255,.9);border-radius:999px;padding:7px 14px}
+.ba .lb.l{left:18px}.ba .lb.r{right:18px}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba-note{font-size:13.5px;color:var(--soft);margin-top:14px}
+.two-h{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,5vw,80px);align-items:center}
+@media(max-width:860px){.two-h{grid-template-columns:1fr}}
+
+/* instagram */
+.ig{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:44px}
+.ig .col{display:grid;gap:14px;align-content:start}
+.ig a{position:relative;display:block;border-radius:18px;overflow:hidden;aspect-ratio:4/5}
+.ig a img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.ig a::after{content:"";position:absolute;inset:0;background:rgba(194,78,107,.55) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.6'%3E%3Crect x='3' y='3' width='18' height='18' rx='5'/%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Ccircle cx='17.5' cy='6.5' r='.6' fill='white'/%3E%3C/svg%3E") center/38px no-repeat;opacity:0;transition:opacity .4s}
+.ig a:hover::after{opacity:1}
+.ig a:hover img{transform:scale(1.08)}
+.ig .col:nth-child(even){margin-top:60px}
+@media(max-width:760px){.ig{grid-template-columns:repeat(2,minmax(0,1fr))}.ig .col:nth-child(even){margin-top:30px}}
+.handle{font:italic 300 clamp(40px,5vw,64px)/1 Cormorant,serif;color:var(--deep)}
+
+/* tips */
+.tips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:54px}
+.tip{background:#fff;border-radius:var(--r);padding:32px 28px;box-shadow:0 30px 60px -45px rgba(142,45,74,.45)}
+.tip .ico{width:64px;height:64px;margin-bottom:18px}
+.tip .when{font-size:13.5px;color:var(--deep);font-weight:600}
+.tip h3{margin:10px 0 12px}
+.tip p{color:var(--soft);font-size:15.5px}
+@media(max-width:860px){.tips{grid-template-columns:1fr}}
+
+/* avis */
+.reviews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:46px}
+.rv{border:1px dashed rgba(58,23,36,.3);border-radius:var(--r);padding:30px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;color:var(--soft);background:rgba(255,255,255,.5)}
+.rv .stars{color:var(--deep);letter-spacing:4px}
+.rv q{font:italic 300 24px/1.25 Cormorant,serif;color:var(--ink);quotes:none}
+@media(max-width:860px){.reviews{grid-template-columns:1fr}}
+
+/* faq + hours */
+.two{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(36px,6vw,90px)}
+.qa{border-top:1px solid var(--line)}
+.qa:last-child{border-bottom:1px solid var(--line)}
+.qa button{all:unset;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;width:100%;padding:24px 0;font:400 27px/1.2 Cormorant,serif;box-sizing:border-box}
+.qa button:focus-visible{outline:2px solid var(--deep);outline-offset:3px}
+.qa button::after{content:"";flex:none;width:14px;height:14px;background:linear-gradient(var(--deep),var(--deep)) center/100% 1.5px no-repeat,linear-gradient(var(--deep),var(--deep)) center/1.5px 100% no-repeat;transition:transform .5s var(--ease)}
+.qa.open button::after{transform:rotate(135deg)}
+.qa .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.qa.open .ans{grid-template-rows:1fr}
+.qa .ans>div{overflow:hidden}
+.qa .ans p{color:var(--soft);padding-bottom:24px;max-width:36em}
+.hours{background:var(--night);color:var(--cream);border-radius:var(--r);padding:38px;align-self:start}
+.hours h3{color:var(--cream);margin-bottom:20px}
+.hours table{width:100%;border-collapse:collapse;font-size:15px}
+.hours td{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.hours td:last-child{text-align:right;white-space:nowrap;color:rgba(255,248,247,.85)}
+.hours tr.today td{color:var(--rose2)}
+.hours .now{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,248,247,.7);margin-bottom:10px}
+.hours .now i{width:8px;height:8px;border-radius:50%;background:#8FD19E;animation:pulse 2s infinite}
+.hours .now.off i{background:#9A8F88;animation:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(143,209,158,.6)}70%{box-shadow:0 0 0 10px rgba(143,209,158,0)}100%{box-shadow:0 0 0 0 rgba(143,209,158,0)}}
+.hours .loc{margin:26px 0;color:rgba(255,248,247,.7);font-size:15px}
+.hours .btn{width:100%}
+@media(max-width:860px){.two{grid-template-columns:1fr}}
+
+/* final */
+.final{position:relative;overflow:hidden;color:#fff;text-align:center;background:var(--night)}
+.final video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6}
+.final::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 70% at 50% 50%,rgba(194,78,107,.25),rgba(43,15,27,.9));z-index:1}
+.final .wrap{position:relative;z-index:2;padding-block:clamp(130px,16vw,220px)}
+.final h2{font-size:clamp(52px,8vw,112px);color:#fff}
+.final p{margin:22px auto 38px;max-width:30em;color:rgba(255,255,255,.85);font-size:18px}
+footer{background:var(--night);color:rgba(255,248,247,.7);font-size:14.5px;overflow:hidden}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-block:44px 30px;border-top:1px solid rgba(255,255,255,.08)}
+footer nav{display:flex;gap:22px;flex-wrap:wrap}
+footer a{text-decoration:none}footer a:hover{color:#fff}
+footer .giant{font:300 clamp(80px,19vw,290px)/.8 Cormorant,serif;color:rgba(243,196,204,.09);text-align:center;letter-spacing:-.03em;white-space:nowrap;padding-bottom:20px}
+
+/* hero refinements */
+.hero .wrap{justify-content:flex-end;padding-top:110px}
+.hero .lead{font-size:19px;max-width:26em;margin:24px 0 34px}
+.hero .kick{font-size:15px;letter-spacing:.01em}
+.hero h1{font-size:clamp(60px,9.4vw,150px)}
+.status{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:13.5px;font-weight:500;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:999px;padding:8px 16px 8px 12px;margin-bottom:26px}
+.status i{width:8px;height:8px;border-radius:50%;background:#8FD19E;box-shadow:0 0 0 4px rgba(143,209,158,.25)}
+.status.off i{background:#F3C4CC;box-shadow:0 0 0 4px rgba(243,196,204,.25)}
+.qbook{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr) auto;align-items:center;gap:6px;max-width:720px;padding:8px;border-radius:999px;background:rgba(255,248,247,.94);color:var(--ink);box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+.qf{display:flex;flex-direction:column;padding:6px 22px;border-right:1px solid var(--line);min-height:52px;justify-content:center}
+.qf span{font-size:12px;font-weight:600;color:var(--deep)}
+.qf select{font:500 16px Manrope,sans-serif;color:var(--ink);border:0;background:transparent;padding:2px 0;margin:0;cursor:pointer;outline:none;width:100%}
+.qf b{font-weight:500;font-size:16px;white-space:nowrap}
+.qbook .btn{min-height:58px}
+.trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px;font:italic 300 20px Cormorant,serif;color:rgba(255,255,255,.75)}
+@media(max-width:700px){.qbook{grid-template-columns:1fr;border-radius:26px;padding:10px}.qf{border-right:0;border-bottom:1px solid var(--line);padding:8px 14px}.qinfo{display:none}.trust{display:none}}
+
+/* booking modal */
+.bk{position:fixed;inset:0;z-index:98;height:100vh;height:100dvh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,640px);visibility:hidden;pointer-events:none}
+.bk.open{visibility:visible;pointer-events:auto}
+.bk .veil{background:rgba(43,15,27,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .5s}
+.bk.open .veil{opacity:1}
+.bk .panel2{background:var(--cream);height:100vh;height:100dvh;overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateX(100%);transition:transform .7s var(--ease);display:flex;flex-direction:column;overscroll-behavior:contain}
+.bk.open .panel2{transform:none}
+.bk header{position:sticky;top:0;background:var(--cream);z-index:2;padding:26px 32px 18px;border-bottom:1px solid var(--line)}
+.bk .top2{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.bk h2{font-size:38px}
+.bk .x{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:20px;line-height:1;color:var(--ink)}
+.steps{display:flex;gap:8px;margin-top:18px}
+.steps li{list-style:none;flex:1;font-size:12.5px;font-weight:600;color:var(--soft)}
+.steps li::before{content:"";display:block;height:3px;border-radius:3px;background:var(--line);margin-bottom:8px;transition:background .4s}
+.steps li.on{color:var(--deep)}
+.steps li.on::before{background:var(--deep)}
+.steps{padding:0;margin-bottom:0}
+.bk .body{padding:26px 32px 40px;flex:1}
+.bk .stp{display:none;animation:stIn .6s var(--ease)}
+.bk .stp.on{display:block}
+@keyframes stIn{from{opacity:0;transform:translateX(30px)}}
+.bk h3{font-size:26px;margin:18px 0 10px}
+.bk h3:first-child{margin-top:0}
+.svc{display:grid;gap:10px}
+.svc label{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 18px;border:1px solid var(--line);border-radius:18px;background:#fff;cursor:pointer;transition:border-color .3s,background .3s,transform .3s}
+.svc label:hover{border-color:var(--rose2);transform:translateX(4px)}
+.svc input{accent-color:var(--deep);width:18px;height:18px;margin:0}
+.svc label:has(input:checked){border-color:var(--deep);background:#FFF0F3}
+.svc b{display:block;font:500 21px Cormorant,serif}
+.svc small{color:var(--soft);font-size:13.5px}
+.svc .pp{font:500 22px Cormorant,serif;white-space:nowrap;text-align:right}
+.svc .pp small{display:block;font:500 12.5px Manrope,sans-serif}
+.cal{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px}
+.cal .mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.cal .mh b{font:500 24px Cormorant,serif;text-transform:capitalize}
+.cal .mh button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--cream);cursor:pointer;font-size:18px;color:var(--ink)}
+.cal .mh button:disabled{opacity:.3;cursor:default}
+.cal .dw,.cal .days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;text-align:center}
+.cal .dw span{font-size:12px;font-weight:600;color:var(--soft);padding:6px 0}
+.cal .days button{aspect-ratio:1;border:0;border-radius:50%;background:transparent;font:500 15px Manrope,sans-serif;color:var(--ink);cursor:pointer;transition:background .25s,color .25s;min-height:40px}
+.cal .days button:hover:not(:disabled){background:#FFE3E9}
+.cal .days button:disabled{color:rgba(58,23,36,.25);cursor:default;text-decoration:line-through}
+.cal .days button.sel,.cal .days button.sel:hover{background:var(--deep)!important;color:#fff;transition:none}
+.cal .days button.today{box-shadow:inset 0 0 0 1px var(--rose2)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;margin-top:8px}
+.slots button{min-height:46px;border:1px solid var(--line);border-radius:14px;background:#fff;font:500 15px Manrope,sans-serif;color:var(--ink);cursor:pointer;transition:all .25s}
+.slots button:hover{border-color:var(--deep)}
+.slots button.sel{background:var(--deep);border-color:var(--deep);color:#fff}
+.slots .empty{grid-column:1/-1;color:var(--soft);font-size:14.5px;padding:10px 0}
+.fld{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.fld label{display:flex;flex-direction:column;gap:6px;font-size:13.5px;font-weight:600}
+.fld label.w{grid-column:1/-1}
+.fld input,.fld textarea{font:400 16px Manrope,sans-serif;color:var(--ink);border:1px solid rgba(58,23,36,.25);border-radius:14px;padding:13px 14px;background:#fff;outline:none;transition:border-color .3s,box-shadow .3s}
+.fld input:focus,.fld textarea:focus{border-color:var(--deep);box-shadow:0 0 0 4px rgba(194,78,107,.15)}
+.fld .err{color:#B3261E;font-weight:500;font-size:12.5px;min-height:1em}
+.fld label.chk{flex-direction:row;align-items:center;gap:10px;font-weight:500}
+.fld label.chk input{width:18px;height:18px;accent-color:var(--deep)}
+@media(max-width:520px){.fld{grid-template-columns:1fr}}
+.recap{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 22px;margin-top:16px}
+.recap div{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+.recap div:last-child{border:0}
+.recap div span{color:var(--soft)}
+.recap div b{font-weight:600;text-align:right}
+.bk footer{position:sticky;bottom:0;background:var(--cream);border-top:1px solid var(--line);padding:16px 32px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.bk footer .sum{font-size:14px;color:var(--soft)}
+.bk footer .sum b{display:block;color:var(--ink);font:500 20px Cormorant,serif}
+.bk footer .acts{display:flex;gap:8px}
+.bk footer .btn{min-height:50px;padding:0 24px}
+.bk footer .btn[disabled]{opacity:.4;pointer-events:none}
+.done2{text-align:center;padding:30px 0}
+.done2 .ok{width:84px;height:84px;border-radius:50%;background:var(--deep);color:#fff;display:grid;place-items:center;margin:0 auto 20px;font-size:38px;animation:pop .8s var(--ease)}
+@keyframes pop{from{transform:scale(0) rotate(-90deg)}}
+.done2 p{color:var(--soft);margin-top:10px}
+.demo{font-size:12.5px;color:var(--soft);background:#FFF0F3;border-radius:12px;padding:10px 14px;margin-top:18px}
+@media(max-width:560px){.bk footer .sum{display:none}.bk footer .acts{width:100%}.bk footer .acts .btn{flex:1}}
+@media(max-width:760px){.bk{grid-template-columns:1fr}.bk .veil{display:none}.bk header,.bk .body,.bk footer{padding-left:20px;padding-right:20px}}
+
+.js .rv-in{opacity:0;transform:translateY(40px)}
+.js .clip{clip-path:inset(100% 0 0 0)}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+<script>
+window.PEMA_EN=(()=>{let v=false;try{v=localStorage.getItem('pema-lang')==='en'}catch(e){}if(location.hash==='#en')v=true;if(location.hash==='#fr')v=false;return v})();
+window.PEMA_MAP={"L'approche": "Our approach", "Les soins": "Treatments", "Le rituel": "The ritual", "Le studio": "The studio", "Réserver": "Book", "Réserver un soin": "Book a treatment", "Gracia · Facialiste à Montréal": "Gracia · Facialist in Montréal", "Votre repos,": "Your rest,", "notre priorité.": "our priority.", "Soins du visage sur mesure dans un studio privé de Hochelaga-Maisonneuve.": "Tailored facials in a private studio in Hochelaga-Maisonneuve.", "Découvrir les soins": "Explore treatments", "Défiler": "Scroll", "Massage liftant": "Lifting massage", "Drainage lymphatique": "Lymphatic drainage", "Luminothérapie": "Light therapy", "Peelings": "Peels", "La philosophie Pema": "The Pema philosophy", "Une belle peau ne vient pas d'une montagne de produits.": "Beautiful skin doesn't come from a mountain of products.", "Bons gestes": "Good habits", "Une routine simple et régulière, pensée pour votre peau. La régularité l'emporte toujours sur la complexité.": "A simple, consistent routine designed for your skin. Consistency always beats complexity.", "Vrai repos": "Real rest", "Un moment rien qu'à vous pour relâcher les tensions du visage, du cou et des épaules.": "A moment just for you to release tension in the face, neck and shoulders.", "Bonne mine": "Healthy glow", "Un teint lumineux, des traits détendus et une peau qui garde ses résultats.": "A radiant complexion, relaxed features and skin that keeps its results.", "On voit passer des routines à douze étapes. Pourtant, une belle peau commence par": "We see twelve-step routines everywhere. Yet beautiful skin starts with", "trois gestes": "three simple steps", "bien faits et un": "done well and a", "vrai moment de repos.": "true moment of rest.", "Gracia, fondatrice de Pema Skin": "Gracia, founder of Pema Skin", "Première visite": "First visit", "Soin Découverte Pema": "Pema Discovery Facial", "45 minutes": "45 minutes", "Une analyse fondée sur le bilan de peau rempli lors de la réservation": "A skin analysis based on the questionnaire completed when booking", "Un nettoyage adapté aux besoins de votre peau": "A cleanse tailored to your skin's needs", "Cinq minutes de massage facial pour relâcher les tensions et raviver l'éclat": "Five minutes of facial massage to release tension and revive radiance", "Réserver ma découverte": "Book my discovery facial", "Réservé exclusivement aux nouvelles clientes et nouveaux clients.": "Reserved exclusively for new clients.", "VOTRE REPOS · NOTRE PRIORITÉ ·": "YOUR REST · OUR PRIORITY · ", "Bienvenue chez Pema Skin": "Welcome to Pema Skin", "L'art de la détente au cœur du soin.": "The art of relaxation at the heart of care.", "Je m'appelle Gracia. Dans mon studio privé de Hochelaga-Maisonneuve, chaque soin commence par une analyse de votre peau et une véritable conversation. J'allie l'expertise manuelle, massage liftant et drainage lymphatique, à des gammes de prestige pour des résultats visibles et une détente profonde.": "I'm Gracia. In my private studio in Hochelaga-Maisonneuve, every treatment begins with a skin analysis and a real conversation. I combine hands-on expertise, lifting massage and lymphatic drainage, with prestige skincare lines for visible results and deep relaxation.", "« Votre bien-être, mon combat. »": "“Your well-being is my mission.”", "Analyse cutanée": "Skin analysis", "Soins non invasifs": "Non-invasive treatments", "La carte des soins": "Treatment menu", "Choisissez votre moment.": "Choose your moment.", "Le rituel Évasion Pema · 1 h 30 · 150 $": "The Évasion Pema ritual · 1 h 30 · $150", "L'expérience haute performance, étape par étape.": "The high-performance experience, step by step.", "Réserver l'Évasion": "Book the Évasion", "Purifier": "Purify", "Double nettoyage et exfoliation": "Double cleanse and exfoliation", "Un nettoyage profond suivi d'une exfoliation ciblée libère la peau de ses impuretés et la prépare à recevoir le soin.": "A deep cleanse followed by targeted exfoliation frees the skin of impurities and prepares it for the treatment.", "Assainir": "Clarify", "Extraction et masque à l'avoine": "Extraction and oat mask", "La spatule ultrasonique assainit les pores en douceur, puis un masque hydratant à base d'avoine apaise et repulpe.": "The ultrasonic spatula gently clears the pores, then a hydrating oat mask soothes and plumps.", "Sculpter": "Sculpt", "Luminothérapie et 30 minutes de massage": "Light therapy and 30 minutes of massage", "La lumière régénère les tissus. Le massage remodelant dénoue les tensions et offre un effet lifting naturel.": "Light regenerates the tissue. The sculpting massage melts tension for a natural lifting effect.", "Protéger": "Protect", "Hydratant et écran solaire": "Moisturizer and sunscreen", "La peau est nourrie et protégée pour que l'éclat se prolonge bien après votre visite.": "Skin is nourished and protected so the glow lasts long after your visit.", "Je réserve · 150 $": "Book now · $150", "Résultats": "Results", "Voyez la différence.": "See the difference.", "Faites glisser le curseur pour comparer avant et après le soin.": "Drag the slider to compare before and after the treatment.", "Avant": "Before", "Après": "After", "Démonstration du curseur : les vraies photos avant et après des clientes de Gracia remplaceront ces images.": "Slider demo: real before-and-after photos of Gracia's clients will replace these images.", "Suivez le studio": "Follow the studio", "Suivre sur Instagram": "Follow on Instagram", "Elles en parlent": "What clients say", "Le sourire à la fin du soin.": "The smile at the end of the treatment.", "Lire les avis sur Instagram": "Read reviews on Instagram", "Espace réservé à un avis de cliente.": "Placeholder for a client review.", "Prénom · Soin choisi": "First name · Treatment", "Questions fréquentes": "Frequently asked questions", "Tout ce qu'il faut savoir.": "Everything you need to know.", "Horaires": "Hours", "Studio privé, Hochelaga-Maisonneuve": "Private studio, Hochelaga-Maisonneuve", "Montréal (Québec) H1V · métro Viau": "Montréal (Québec) H1V · Viau metro", "Voir les disponibilités": "See availability", "Vous méritez ce moment de calme.": "You deserve this moment of calm.", "Une heure pour vous, une peau qui respire et des traits qui se relâchent.": "An hour for yourself, skin that breathes and features that relax.", "Réserver mon soin": "Book my treatment", "Soin": "Treatment", "Date et heure": "Date & time", "Coordonnées": "Your details", "Confirmation": "Confirmation", "Choisissez une date": "Choose a date", "Heures disponibles": "Available times", "Sélectionnez d'abord une date.": "Select a date first.", "Vos coordonnées": "Your details", "Prénom": "First name", "Nom": "Last name", "Téléphone": "Phone", "Courriel": "Email", "Préoccupations de peau ou message (facultatif)": "Skin concerns or message (optional)", "C'est ma première visite chez Pema Skin": "This is my first visit to Pema Skin", "Merci,": "Thank you,", "Voici le récapitulatif de votre rendez-vous.": "Here is a summary of your appointment.", "Version de démonstration : dans le site final, cette réservation sera enregistrée dans l'agenda de Gracia et une confirmation vous sera envoyée par courriel.": "Demo version: on the live site, this booking will be saved to Gracia's calendar and a confirmation will be emailed to you.", "Aucun soin choisi": "No treatment selected", "Retour": "Back", "Continuer": "Continue", "Réservation": "Booking", "Soins": "Treatments", "© 2026 Pema Skin · Montréal · Site par LVO": "© 2026 Pema Skin · Montréal · Website by LVO", "Réserver un soin ": "Book a treatment", "Signatures": "Signatures", "Techniques": "Clinical", "Cures": "Programs", "Détente": "Relaxation", "Pema First": "Pema First", "Le point de départ": "The starting point", "Une analyse approfondie de votre peau et un échange sur vos besoins, suivis d'un soin facial complet.": "An in-depth skin analysis and a conversation about your needs, followed by a complete facial.", "Nettoyage adapté": "Tailored cleanse", "10 min de massage": "10-min massage", "Écran solaire": "Sunscreen", "Glow Lymphatique": "Lymphatic Glow", "Traits redéfinis": "Redefined features", "Une cure de légèreté : un massage sculptant qui stimule la circulation et l'élimination des toxines.": "A lightness treatment: a sculpting massage that boosts circulation and drainage.", "Double nettoyage": "Double cleanse", "Sérum ciblé": "Targeted serum", "Apaisement par le froid": "Cold soothing", "Évasion Pema": "Évasion Pema", "Haute performance": "High performance", "Le protocole complet pour une transformation visible et un effet lifting naturel.": "The complete protocol for a visible transformation and a natural lifting effect.", "Extraction ultrasonique": "Ultrasonic extraction", "30 min de massage": "30-min massage", "Dermaplaning professionnel": "Professional dermaplaning", "Grain lissé": "Smoother texture", "Une exfoliation précise qui retire les cellules mortes et le duvet pour un teint éclatant et une meilleure absorption des soins.": "Precise exfoliation that removes dead cells and peach fuzz for a radiant complexion and better product absorption.", "Hydratation intense": "Intense hydration", "Protection solaire": "Sun protection", "Soin Microneedling": "Microneedling facial", "Pores et taches": "Pores and spots", "Une réponse sur mesure aux imperfections, au relâchement cutané, aux pores dilatés et aux taches.": "A tailored answer to blemishes, loss of firmness, enlarged pores and dark spots.", "Sérum stérile concentré": "Concentrated sterile serum", "Masque réparateur": "Repair mask", "Duo Éclat Absolu": "Absolute Radiance Duo", "Dermaplaning + peeling": "Dermaplaning + peel", "Le dermaplaning prépare la peau, puis le peeling enzymatique agit en profondeur pour un renouvellement optimal.": "Dermaplaning preps the skin, then the enzyme peel works deeper for optimal renewal.", "Peau parfaitement lisse": "Perfectly smooth skin", "Teint lumineux": "Radiant complexion", "Peeling Enzymatique O2 Lift": "O2 Lift Enzyme Peel", "Peaux sensibles": "Sensitive skin", "Une exfoliation haut de gamme aux enzymes de fruits : pores désincrustés, texture lissée, éclat ravivé.": "A premium fruit-enzyme exfoliation: unclogged pores, smoother texture, revived glow.", "Sans agresser": "Gentle", "Effet immédiat": "Instant effect", "Peeling Signature": "Signature Peel", "Image Skincare · 30 % vit. C": "Image Skincare · 30% vit. C", "Il cible les taches, les ridules, la déshydratation et le teint terne sans agresser la barrière cutanée.": "Targets spots, fine lines, dehydration and dullness without harming the skin barrier.", "Masque réhydratant": "Rehydrating mask", "Massage du haut du corps": "Upper-body massage", "Cure Peau Saine": "Healthy Skin Program", "Poils incarnés et rougeurs": "Ingrown hairs and redness", "Pour en finir avec les irritations liées au rasage. Une séance toutes les 3 à 4 semaines.": "To end shaving-related irritation. One session every 3 to 4 weeks.", "Exfoliation ultrasonique": "Ultrasonic exfoliation", "Extractions ciblées": "Targeted extractions", "Cure Éclat Unifié": "Even Glow Program", "Hyperpigmentation": "Hyperpigmentation", "Elle estompe les taches et les marques d'acné foncées en freinant la surproduction de mélanine.": "Fades dark spots and acne marks by curbing excess melanin.", "Nettoyage PCA Skin": "PCA Skin cleanse", "Sérum correcteur": "Corrective serum", "L'Envol Pema": "L'Envol Pema", "Lâcher prise": "Let go", "Une relaxation profonde du visage, du cuir chevelu, du cou et des épaules pour repartir l'esprit léger.": "Deep relaxation of the face, scalp, neck and shoulders so you leave with a light mind.", "Visage": "Face", "Cuir chevelu": "Scalp", "Cou et épaules": "Neck and shoulders", "3 séances": "3 sessions", "4 séances": "4 sessions", "1 h 30 par séance": "1 h 30 per session", "Nouvelles clientes seulement": "New clients only", "Survolez": "Hover", "Touchez": "Tap", "pour le détail": "for details", "C'est ma première visite. Quel soin choisir ?": "It's my first visit. Which treatment should I choose?", "Le Soin Découverte Pema (45 min, 90 $) a été pensé pour vous : analyse à partir de votre bilan de peau, nettoyage adapté et massage facial. Pour un soin complet dès le départ, le Pema First (1 h, 100 $) comprend une analyse approfondie et 10 minutes de massage.": "The Pema Discovery Facial (45 min, $90) is designed for you: analysis based on your skin questionnaire, a tailored cleanse and a facial massage. For a full treatment from the start, Pema First (1 h, $100) includes an in-depth analysis and 10 minutes of massage.", "Quelle est la différence entre un soin et une cure ?": "What's the difference between a treatment and a program?", "Un soin est une séance unique. Une cure regroupe plusieurs séances ciblées sur une préoccupation précise : 3 séances pour les poils incarnés et rougeurs, 4 séances pour l'hyperpigmentation.": "A treatment is a single session. A program groups several sessions targeting a specific concern: 3 sessions for ingrown hairs and redness, 4 sessions for hyperpigmentation.", "Quelles marques utilisez-vous ?": "Which brands do you use?", "Des gammes professionnelles de prestige : Institut Esthederm, PCA Skin, AlumierMD et Image Skincare, choisies selon les besoins de votre peau.": "Prestige professional lines: Institut Esthederm, PCA Skin, AlumierMD and Image Skincare, chosen for your skin's needs.", "Comment réserver ?": "How do I book?", "Directement en ligne, en choisissant votre soin et votre heure. Pour toute question, vous pouvez aussi écrire à Gracia en message privé sur Instagram.": "Right here online, by choosing your treatment and time. For any question, you can also message Gracia on Instagram.", "Où se trouve le studio ?": "Where is the studio?", "Dans un studio privé du quartier Hochelaga-Maisonneuve, à Montréal, près du métro Viau.": "In a private studio in Montréal's Hochelaga-Maisonneuve neighbourhood, near Viau metro.", "Lundi": "Monday", "Mardi": "Tuesday", "Mercredi": "Wednesday", "Jeudi": "Thursday", "Vendredi": "Friday", "Samedi": "Saturday", "Dimanche": "Sunday", "Fermé": "Closed", "Ouvert en ce moment": "Open now", "Fermé en ce moment": "Closed now", "Choisir une date": "Choose a date", "Mes coordonnées": "My details", "Confirmer le rendez-vous": "Confirm appointment", "Terminer": "Done", "Choisissez un soin": "Choose a treatment", "Aucune plage libre ce jour-là.": "No openings that day.", "Durée": "Duration", "Date": "Date", "Heure": "Time", "Prix": "Price", "Lieu": "Location", "Au nom de": "Name", "Indiquez votre prénom": "Enter your first name", "Indiquez votre nom": "Enter your last name", "Numéro à 10 chiffres": "10-digit number", "Courriel invalide": "Invalid email", "Fermer": "Close", "Mois précédent": "Previous month", "Mois suivant": "Next month", "Ouvrir le menu": "Open menu", "Comparer avant et après": "Compare before and after", "Choisir un soin": "Choose a treatment"};
+window.T=x=>window.PEMA_EN&&window.PEMA_MAP[x]!=null?window.PEMA_MAP[x]:x;
+window.TP=p=>window.PEMA_EN?p.replace(/(\d+) \$/g,'$$$1'):p;
+if(window.PEMA_EN){document.documentElement.lang='en';document.title='Pema Skin Montréal · Facials';}
+</script>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="cring" id="cring" aria-hidden="true"><span>Voir</span></div><div class="cur" id="cur" aria-hidden="true"></div>
+
+<div class="pre" id="pre" aria-hidden="true">
+  <div class="in">
+    <svg class="drop" viewBox="0 0 14 18"><path d="M7 0C7 0 0 8 0 11.5A7 7 0 0 0 14 11.5C14 8 7 0 7 0Z"/></svg>
+    <div class="w"><span>Pema Skin</span></div>
+    <div class="bar"><i id="bar"></i></div>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Pema Skin, accueil">
+      <svg viewBox="0 0 14 18" aria-hidden="true"><path d="M7 1C7 1 1 8.5 1 11.5A6 6 0 0 0 13 11.5C13 8.5 7 1 7 1Z" fill="none" stroke="currentColor" stroke-width="1.1"/></svg>
+      Pema Skin
+    </a>
+    <nav class="links" id="links">
+      <a href="#approche">L'approche</a>
+      <a href="#soins">Les soins</a>
+      <a href="#rituel">Le rituel</a>
+      <a href="#instagram">Instagram</a>
+      <a href="#visite">Le studio</a>
+    </nav>
+    <a class="btn mag" href="#reserver" data-book=""><span>Réserver</span></a>
+    <a class="lang" id="lang" href="#" aria-label="English version">EN</a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<a class="fab" id="fab" href="#reserver" data-book=""><i></i>Réserver un soin</a>
+
+<main id="top">
+<section class="hero" id="hero">
+  <img class="poster" src="img/poster.webp" alt="" aria-hidden="true">
+  <video id="vid" src="img/hero.mp4" poster="img/poster.webp" autoplay muted loop playsinline preload="auto" aria-label="Moments de soins du visage au studio"></video>
+  <div class="tint"></div><div class="shade"></div>
+  <div class="wrap">
+    <span class="kick hin">Gracia · Facialiste à Montréal</span>
+    <h1 class="split">Votre repos, <em>notre priorité.</em></h1>
+    <p class="lead hin">Soins du visage sur mesure dans un studio privé de Hochelaga-Maisonneuve.</p>
+    <div class="cta hin">
+      <a class="btn rose mag" href="#reserver" data-book=""><span>Réserver un soin</span></a>
+      <a class="btn glass mag" href="#soins"><span>Découvrir les soins</span></a>
+    </div>
+  </div>
+  <span class="sound" aria-hidden="true">Défiler<i></i></span>
+</section>
+
+<div class="marq" aria-label="Gammes professionnelles utilisées">
+  <div class="row" id="mq1"><span>Institut Esthederm</span><span>PCA Skin</span><span>AlumierMD</span><span>Image Skincare</span><span>Institut Esthederm</span><span>PCA Skin</span><span>AlumierMD</span><span>Image Skincare</span></div>
+  <div class="row b" id="mq2" aria-hidden="true"><span>Massage liftant</span><span>Drainage lymphatique</span><span>Luminothérapie</span><span>Peelings</span><span>Massage liftant</span><span>Drainage lymphatique</span><span>Luminothérapie</span><span>Peelings</span></div>
+</div>
+
+<div class="stackz" id="approche">
+  <section class="layer l1" data-bg="#FFEFF1">
+    <div class="wrap">
+      <span class="kick">La philosophie Pema</span>
+      <h2 class="split">Une belle peau ne vient pas d'une montagne de produits.</h2>
+      <div class="eq" id="eq">
+        <div class="t"><b>Bons gestes</b><p>Une routine simple et régulière, pensée pour votre peau. La régularité l'emporte toujours sur la complexité.</p></div>
+        <div class="op" aria-hidden="true">+</div>
+        <div class="t"><b>Vrai repos</b><p>Un moment rien qu'à vous pour relâcher les tensions du visage, du cou et des épaules.</p></div>
+        <div class="op" aria-hidden="true">=</div>
+        <div class="t res"><b>Bonne mine</b><p>Un teint lumineux, des traits détendus et une peau qui garde ses résultats.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="layer l2" aria-label="Manifeste">
+    <div class="portrait"><img class="par" src="img/profil.webp" alt="Femme au teint lumineux, de profil" loading="lazy"></div>
+    <div class="wrap">
+      <p class="big" id="big">On voit passer des routines à douze étapes. Pourtant, une belle peau commence par <span class="r">trois gestes</span> bien faits et un <span class="r">vrai moment de repos.</span></p>
+      <p class="sig">Gracia, fondatrice de Pema Skin</p>
+    </div>
+  </section>
+  <section class="layer l3" aria-label="Offre première visite">
+    <div class="wrap offer">
+      <div>
+        <span class="kick" style="color:var(--berry)">Première visite</span>
+        <h2>Soin Découverte Pema</h2>
+        <div class="price"><span data-count="90">90</span> $<small>45 minutes</small></div>
+        <ul>
+          <li>Une analyse fondée sur le bilan de peau rempli lors de la réservation</li>
+          <li>Un nettoyage adapté aux besoins de votre peau</li>
+          <li>Cinq minutes de massage facial pour relâcher les tensions et raviver l'éclat</li>
+        </ul>
+        <a class="btn dark mag" href="#reserver" data-book="decouverte"><span>Réserver ma découverte</span></a>
+        <p class="note">Réservé exclusivement aux nouvelles clientes et nouveaux clients.</p>
+      </div>
+      <div class="pics">
+        <div class="p1"><img class="par" src="img/front.webp" alt="Massage du front pendant un soin" loading="lazy"></div>
+        <div class="p2"><img class="par" src="img/serviette.webp" alt="Cliente détendue avec une serviette rose" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="band" data-bg="#FADCE1">
+  <div class="wrap about">
+    <div class="arch">
+      <span class="ring" aria-hidden="true"></span>
+      <div class="ph clip"><img class="par" src="img/cou.webp" alt="Main posée délicatement sur le cou, peau éclatante" loading="lazy"></div>
+      <svg class="badge" viewBox="0 0 140 140" aria-hidden="true"><defs><path id="c" d="M70 70m-54 0a54 54 0 1 1 108 0a54 54 0 1 1-108 0"/></defs><circle cx="70" cy="70" r="69" fill="#FFF8F7"/><text><textPath href="#c">VOTRE REPOS · NOTRE PRIORITÉ · </textPath></text><path d="M70 52C70 52 61 63 61 68A9 9 0 0 0 79 68C79 63 70 52 70 52Z" fill="#C24E6B"/></svg>
+    </div>
+    <div>
+      <span class="kick rv-in">Bienvenue chez Pema Skin</span>
+      <h2 class="split">L'art de la détente au cœur du soin.</h2>
+      <p class="lead rv-in">Je m'appelle Gracia. Dans mon studio privé de Hochelaga-Maisonneuve, chaque soin commence par une analyse de votre peau et une véritable conversation. J'allie l'expertise manuelle, massage liftant et drainage lymphatique, à des gammes de prestige pour des résultats visibles et une détente profonde.</p>
+      <p class="quote rv-in">« Votre bien-être, mon combat. »</p>
+      <div class="marks rv-in"><span>Analyse cutanée</span><span>Soins non invasifs</span><span>Massage liftant</span><span>Drainage lymphatique</span><span>Luminothérapie</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="soins" data-bg="#FFEFF1">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="kick">La carte des soins</span><h2 class="split">Choisissez votre moment.</h2></div>
+      <div class="tabs" role="tablist" id="tabs"></div>
+    </div>
+    <div class="grid" id="grid" role="tabpanel"></div>
+  </div>
+</section>
+
+<section class="ritual" id="rituel" data-bg="#2B0F1B">
+  <div class="wrap top">
+    <div><span class="kick">Le rituel Évasion Pema · 1 h 30 · 150 $</span><h2>L'expérience haute performance, étape par étape.</h2></div>
+    <a class="btn light mag" href="#reserver" data-book=""><span>Réserver l'Évasion</span></a>
+  </div>
+  <div class="wrap"><div class="prog"><i id="prog"></i></div></div>
+  <div class="hscroll" id="hs">
+    <article class="panel"><div class="pi"><img src="img/mousse.webp" alt="Double nettoyage à la mousse" loading="lazy"></div><div><div class="st">Purifier</div><h3>Double nettoyage et exfoliation</h3><p>Un nettoyage profond suivi d'une exfoliation ciblée libère la peau de ses impuretés et la prépare à recevoir le soin.</p></div></article>
+    <article class="panel"><div class="pi"><img src="img/pinceau.webp" alt="Application d'un masque au pinceau" loading="lazy"></div><div><div class="st">Assainir</div><h3>Extraction et masque à l'avoine</h3><p>La spatule ultrasonique assainit les pores en douceur, puis un masque hydratant à base d'avoine apaise et repulpe.</p></div></article>
+    <article class="panel"><div class="pi"><img src="img/mains.webp" alt="Massage remodelant du visage" loading="lazy"></div><div><div class="st">Sculpter</div><h3>Luminothérapie et 30 minutes de massage</h3><p>La lumière régénère les tissus. Le massage remodelant dénoue les tensions et offre un effet lifting naturel.</p></div></article>
+    <article class="panel"><div class="pi"><img src="img/fleurs.webp" alt="Visage lumineux entouré de fleurs roses" loading="lazy"></div><div><div class="st">Protéger</div><h3>Hydratant et écran solaire</h3><p>La peau est nourrie et protégée pour que l'éclat se prolonge bien après votre visite.</p><a class="btn light mag bt" href="#reserver" data-book=""><span>Je réserve · 150 $</span></a></div></article>
+  </div>
+</section>
+
+<section class="band" data-bg="#F3C4CC">
+  <div class="wrap two-h">
+    <div>
+      <span class="kick" style="color:var(--berry)">Résultats</span>
+      <h2 class="split">Voyez la différence.</h2>
+      <p class="lead rv-in" style="margin-top:20px;color:var(--ink)">Faites glisser le curseur pour comparer avant et après le soin.</p>
+    </div>
+    <div>
+      <div class="ba" id="ba">
+        <img src="img/serviette.webp" alt="Photo avant le soin (démonstration)">
+        <img class="after" src="img/profil.webp" alt="Photo après le soin (démonstration)">
+        <span class="lb l">Avant</span><span class="lb r">Après</span>
+        <span class="line"></span><span class="knob" aria-hidden="true">⟷</span>
+        <input type="range" min="0" max="100" value="50" id="baR" aria-label="Comparer avant et après">
+      </div>
+      <p class="ba-note">Démonstration du curseur : les vraies photos avant et après des clientes de Gracia remplaceront ces images.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="instagram" data-bg="#FFEFF1">
+  <div class="wrap">
+    <div class="head" style="margin-bottom:0">
+      <div><span class="kick">Suivez le studio</span><a class="handle" href="https://www.instagram.com/pema.skin/">@pema.skin</a></div>
+      <a class="btn rose mag" href="https://www.instagram.com/pema.skin/"><span>Suivre sur Instagram</span></a>
+    </div>
+    <div class="ig" id="ig">
+      <div class="col" data-speed="-6"><a href="https://www.instagram.com/pema.skin/" aria-label="Instagram Pema Skin"><img src="img/lumiere.webp" alt="" loading="lazy"></a><a href="https://www.instagram.com/pema.skin/" aria-label="Instagram Pema Skin"><img src="img/masque.webp" alt="" loading="lazy"></a></div>
+      <div class="col" data-speed="8"><a href="https://www.instagram.com/pema.skin/" aria-label="Instagram Pema Skin"><img src="img/rouleau.webp" alt="" loading="lazy" style="object-position:30% 50%"></a><a href="https://www.instagram.com/pema.skin/" aria-label="Instagram Pema Skin"><img src="img/serviette.webp" alt="" loading="lazy"></a></div>
+      <div class="col" data-speed="-10"><a href="https://www.instagram.com/pema.skin/" aria-label="Instagram Pema Skin"><img src="img/goutte.webp" alt="" loading="lazy"></a><a href="https://www.instagram.com/pema.skin/" aria-label="Instagram Pema Skin"><img src="img/detente.webp" alt="" loading="lazy"></a></div>
+      <div class="col" data-speed="6"><a href="https://www.instagram.com/pema.skin/" aria-label="Instagram Pema Skin"><img src="img/magenta.webp" alt="" loading="lazy"></a><a href="https://www.instagram.com/pema.skin/" aria-label="Instagram Pema Skin"><img src="img/hero.webp" alt="" loading="lazy"></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" data-bg="#FFEFF1" aria-label="Avis clientes">
+  <div class="wrap">
+    <div class="head" style="margin-bottom:0"><div><span class="kick">Elles en parlent</span><h2 class="split">Le sourire à la fin du soin.</h2></div><a class="btn ghost mag" href="https://www.instagram.com/pema.skin/"><span>Lire les avis sur Instagram</span></a></div>
+    <div class="reviews">
+      <div class="rv rv-in"><span class="stars">★★★★★</span><q>Espace réservé à un avis de cliente.</q><span>Prénom · Soin choisi</span></div>
+      <div class="rv rv-in"><span class="stars">★★★★★</span><q>Espace réservé à un avis de cliente.</q><span>Prénom · Soin choisi</span></div>
+      <div class="rv rv-in"><span class="stars">★★★★★</span><q>Espace réservé à un avis de cliente.</q><span>Prénom · Soin choisi</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="faq" data-bg="#FADCE1">
+  <div class="wrap two">
+    <div>
+      <span class="kick">Questions fréquentes</span>
+      <h2 class="split" style="margin-bottom:34px">Tout ce qu'il faut savoir.</h2>
+      <div id="qas"></div>
+    </div>
+    <aside class="hours" id="visite">
+      <span class="now" id="now"><i></i><span>Horaires</span></span>
+      <h3>Le studio</h3>
+      <table><tbody id="hrs"></tbody></table>
+      <p class="loc">Studio privé, Hochelaga-Maisonneuve<br>Montréal (Québec) H1V · métro Viau</p>
+      <a class="btn light mag" href="#reserver" data-book=""><span>Voir les disponibilités</span></a>
+    </aside>
+  </div>
+</section>
+
+<section class="final">
+  <video src="img/hero.mp4" autoplay muted loop playsinline preload="none" aria-hidden="true"></video>
+  <div class="wrap">
+    <h2 class="split">Vous méritez ce moment de calme.</h2>
+    <p>Une heure pour vous, une peau qui respire et des traits qui se relâchent.</p>
+    <a class="btn rose mag" href="#reserver" data-book=""><span>Réserver mon soin</span></a>
+  </div>
+</section>
+</main>
+
+<div class="bk" id="reserver" role="dialog" aria-modal="true" aria-labelledby="bkT">
+  <div class="veil" data-close></div>
+  <div class="panel2" data-lenis-prevent>
+    <header>
+      <div class="top2"><h2 id="bkT">Réserver un soin</h2><button class="x" data-close aria-label="Fermer">✕</button></div>
+      <ol class="steps" id="bkSteps"><li class="on">Soin</li><li>Date et heure</li><li>Coordonnées</li><li>Confirmation</li></ol>
+    </header>
+    <div class="body">
+      <section class="stp on" data-s="0"><div id="svcList"></div></section>
+      <section class="stp" data-s="1">
+        <h3>Choisissez une date</h3>
+        <div class="cal"><div class="mh"><button type="button" id="calPrev" aria-label="Mois précédent">‹</button><b id="calM"></b><button type="button" id="calNext" aria-label="Mois suivant">›</button></div><div class="dw"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div><div class="days" id="calD"></div></div>
+        <h3 id="slotT">Heures disponibles</h3>
+        <div class="slots" id="slots"><p class="empty">Sélectionnez d'abord une date.</p></div>
+      </section>
+      <section class="stp" data-s="2">
+        <h3>Vos coordonnées</h3>
+        <form class="fld" id="bkForm" novalidate>
+          <label>Prénom<input id="fP" autocomplete="given-name" required><span class="err"></span></label>
+          <label>Nom<input id="fN" autocomplete="family-name" required><span class="err"></span></label>
+          <label>Téléphone<input id="fT" type="tel" autocomplete="tel" inputmode="tel" required><span class="err"></span></label>
+          <label>Courriel<input id="fE" type="email" autocomplete="email" required><span class="err"></span></label>
+          <label class="w">Préoccupations de peau ou message (facultatif)<textarea id="fM" rows="3"></textarea></label>
+          <label class="w chk"><input type="checkbox" id="fF">C'est ma première visite chez Pema Skin</label>
+        </form>
+        <div class="recap" id="recap1"></div>
+      </section>
+      <section class="stp" data-s="3">
+        <div class="done2"><div class="ok">✓</div><h3>Merci, <span id="dName"></span>!</h3><p>Voici le récapitulatif de votre rendez-vous.</p></div>
+        <div class="recap" id="recap2"></div>
+        <p class="demo">Version de démonstration : dans le site final, cette réservation sera enregistrée dans l'agenda de Gracia et une confirmation vous sera envoyée par courriel.</p>
+      </section>
+    </div>
+    <footer><div class="sum" id="bkSum">Aucun soin choisi<b>—</b></div><div class="acts"><button class="btn ghost" type="button" id="bkBack"><span>Retour</span></button><button class="btn rose" type="button" id="bkNext"><span>Continuer</span></button></div></footer>
+  </div>
+</div>
+
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top" style="color:var(--cream)">Pema Skin</a>
+    <nav><a href="https://www.instagram.com/pema.skin/">Instagram</a><a href="#reserver" data-book="">Réservation</a><a href="#soins">Soins</a><a href="#faq">FAQ</a></nav>
+    <span>© 2026 Pema Skin · Montréal · Site par LVO</span>
+  </div>
+  <div class="giant" aria-hidden="true">Pema Skin</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+{
+const BOOK='https://pemaskin.as.me';
+const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const G=window.gsap, ST=window.ScrollTrigger;
+if(G&&ST)G.registerPlugin(ST);
+const cur=document.getElementById('cur');
+/* language */
+if(window.PEMA_EN){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const ns=[];while(w.nextNode())ns.push(w.currentNode);ns.forEach(n=>{const t=n.textContent.trim();if(t&&PEMA_MAP[t]!=null)n.textContent=n.textContent.replace(t,PEMA_MAP[t]);else if(/\d+ \$/.test(t)&&!n.parentElement.closest('script'))n.textContent=TP(n.textContent)});document.querySelectorAll('[aria-label]').forEach(e=>{const a=e.getAttribute('aria-label');if(PEMA_MAP[a])e.setAttribute('aria-label',PEMA_MAP[a])});const tp=document.querySelector('textPath');if(tp)tp.textContent=PEMA_MAP['VOTRE REPOS · NOTRE PRIORITÉ ·'];document.querySelectorAll('.offer .price').forEach(p=>{p.innerHTML='$<span data-count="90">90</span><small>45 minutes</small>'})}
+{const L=document.getElementById('lang');L.textContent=window.PEMA_EN?'FR':'EN';L.setAttribute('aria-label',window.PEMA_EN?'Version française':'English version');L.addEventListener('click',e=>{e.preventDefault();const nx=window.PEMA_EN?'fr':'en';try{localStorage.setItem('pema-lang',nx)}catch(_){}location.hash=nx;location.reload()})}
+
+
+/* data */
+const cats=[['sig','Signatures'],['tech','Techniques'],['peel','Peelings'],['cure','Cures'],['relax','Détente']];
+const soins=[
+ {id:'first',c:'sig',n:'Pema First',d:'1 h',p:'100 $',img:'pinceau',tag:'Le point de départ',t:'Une analyse approfondie de votre peau et un échange sur vos besoins, suivis d\'un soin facial complet.',inc:['Nettoyage adapté','10 min de massage','Écran solaire']},
+ {id:'glow',c:'sig',n:'Glow Lymphatique',d:'1 h 15',p:'120 $',img:'front',tag:'Traits redéfinis',t:'Une cure de légèreté : un massage sculptant qui stimule la circulation et l\'élimination des toxines.',inc:['Double nettoyage','Sérum ciblé','Apaisement par le froid']},
+ {id:'evasion',c:'sig',n:'Évasion Pema',d:'1 h 30',p:'150 $',img:'mains',tag:'Haute performance',t:'Le protocole complet pour une transformation visible et un effet lifting naturel.',inc:['Extraction ultrasonique','Luminothérapie','30 min de massage']},
+ {id:'derma',c:'tech',n:'Dermaplaning professionnel',d:'1 h',p:'120 $',img:'cou',tag:'Grain lissé',t:'Une exfoliation précise qui retire les cellules mortes et le duvet pour un teint éclatant et une meilleure absorption des soins.',inc:['Hydratation intense','Protection solaire']},
+ {id:'micro',c:'tech',n:'Soin Microneedling',d:'1 h 30',p:'180 $',img:'lumiere',tag:'Pores et taches',t:'Une réponse sur mesure aux imperfections, au relâchement cutané, aux pores dilatés et aux taches.',inc:['Sérum stérile concentré','Masque réparateur','Protection solaire']},
+ {id:'duo',c:'tech',n:'Duo Éclat Absolu',d:'1 h 20',p:'225 $',img:'fleurs',tag:'Dermaplaning + peeling',t:'Le dermaplaning prépare la peau, puis le peeling enzymatique agit en profondeur pour un renouvellement optimal.',inc:['Peau parfaitement lisse','Teint lumineux']},
+ {id:'o2',c:'peel',n:'Peeling Enzymatique O2 Lift',d:'1 h',p:'165 $',img:'masque',tag:'Peaux sensibles',t:'Une exfoliation haut de gamme aux enzymes de fruits : pores désincrustés, texture lissée, éclat ravivé.',inc:['Sans agresser','Effet immédiat']},
+ {id:'peelsig',c:'peel',n:'Peeling Signature',d:'1 h 15',p:'185 $',img:'goutte',tag:'Image Skincare · 30 % vit. C',t:'Il cible les taches, les ridules, la déshydratation et le teint terne sans agresser la barrière cutanée.',inc:['Masque réhydratant','SPF','Massage du haut du corps']},
+ {id:'curesaine',c:'cure',n:'Cure Peau Saine',d:'3 séances',p:'360 $',img:'mousse',tag:'Poils incarnés et rougeurs',t:'Pour en finir avec les irritations liées au rasage. Une séance toutes les 3 à 4 semaines.',inc:['Exfoliation ultrasonique','Extractions ciblées','Luminothérapie']},
+ {id:'cureeclat',c:'cure',n:'Cure Éclat Unifié',d:'4 séances',p:'480 $',img:'magenta',tag:'Hyperpigmentation',t:'Elle estompe les taches et les marques d\'acné foncées en freinant la surproduction de mélanine.',inc:['Nettoyage PCA Skin','Sérum correcteur','LED']},
+ {id:'envol',c:'relax',n:'L\'Envol Pema',d:'1 h',p:'125 $',img:'detente',tag:'Lâcher prise',t:'Une relaxation profonde du visage, du cuir chevelu, du cou et des épaules pour repartir l\'esprit léger.',inc:['Visage','Cuir chevelu','Cou et épaules']}
+];
+const faqs=[
+ ['C\'est ma première visite. Quel soin choisir ?','Le Soin Découverte Pema (45 min, 90 $) a été pensé pour vous : analyse à partir de votre bilan de peau, nettoyage adapté et massage facial. Pour un soin complet dès le départ, le Pema First (1 h, 100 $) comprend une analyse approfondie et 10 minutes de massage.'],
+ ['Quelle est la différence entre un soin et une cure ?','Un soin est une séance unique. Une cure regroupe plusieurs séances ciblées sur une préoccupation précise : 3 séances pour les poils incarnés et rougeurs, 4 séances pour l\'hyperpigmentation.'],
+ ['Quelles marques utilisez-vous ?','Des gammes professionnelles de prestige : Institut Esthederm, PCA Skin, AlumierMD et Image Skincare, choisies selon les besoins de votre peau.'],
+ ['Comment réserver ?','Directement en ligne, en choisissant votre soin et votre heure. Pour toute question, vous pouvez aussi écrire à Gracia en message privé sur Instagram.'],
+ ['Où se trouve le studio ?','Dans un studio privé du quartier Hochelaga-Maisonneuve, à Montréal, près du métro Viau.']
+];
+/*H*/const H=[['Lundi',[10,19],'10 h – 19 h'],['Mardi',[12.5,19],'12 h 30 – 19 h'],['Mercredi',[10,19],'10 h – 19 h'],['Jeudi',[14,19],'14 h – 19 h'],['Vendredi',null,'Fermé'],['Samedi',[10,17],'10 h – 17 h'],['Dimanche',null,'Fermé']];
+if(window.PEMA_EN){cats.forEach(c=>c[1]=T(c[1]));soins.forEach(x=>{['n','t','tag','d'].forEach(k=>x[k]=T(x[k]));x.inc=x.inc.map(T);x.p=TP(x.p)});faqs.forEach(f=>{f[0]=T(f[0]);f[1]=T(f[1])});H.forEach(h=>{h[0]=T(h[0]);h[2]=h[2]==='Fermé'?T('Fermé'):h[2].replace(/(\d+) h (\d+)/g,'$1:$2').replace(/(\d+) h/g,'$1:00').replace('–','–')})}
+
+/* flip cards */
+const tabs=document.getElementById('tabs'),grid=document.getElementById('grid');
+tabs.innerHTML=cats.map(([k,l],i)=>`<button role="tab" id="tab-${k}" aria-selected="${i===0}" data-k="${k}">${l}</button>`).join('');
+function show(k){
+  grid.innerHTML=soins.filter(s=>s.c===k).map((s,i)=>`<article class="flip" data-cur="book" style="animation-delay:${i*120}ms"><div class="in" tabindex="0" role="button" aria-label="${esc(s.n)}"><div class="f"><img src="img/${s.img}.webp" alt="" loading="lazy"><span class="tag">${esc(s.tag)}</span><div class="txt"><h3>${esc(s.n)}</h3><div class="row"><span class="du">${esc(s.d)}</span><span class="pr">${esc(s.p)}</span></div><div class="hint">${T(fine?'Survolez':'Touchez')} ${T('pour le détail')}</div></div></div><div class="b"><h3>${esc(s.n)}</h3><p>${esc(s.t)}</p><div class="inc">${s.inc.map(x=>`<span>${esc(x)}</span>`).join('')}</div><div class="row"><span class="pr">${esc(s.p)} · ${esc(s.d)}</span><a class="btn light" href="#reserver" data-book="${s.id}"><span>${T('Réserver')}</span></a></div></div></div></article>`).join('');
+  tabs.querySelectorAll('button').forEach(b=>b.setAttribute('aria-selected',b.dataset.k===k));
+  grid.setAttribute('aria-labelledby','tab-'+k);
+  grid.querySelectorAll('.flip').forEach(f=>{const t=f.querySelector('.in');t.addEventListener('click',e=>{if(e.target.closest('a'))return;f.classList.toggle('on')});t.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();f.classList.toggle('on')}});});
+  if(ST)ST.refresh();
+}
+tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(b.dataset.k)});
+tabs.addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft'].includes(e.key))return;const bs=[...tabs.children];let i=bs.findIndex(b=>b.getAttribute('aria-selected')==='true');i=(i+(e.key==='ArrowRight'?1:bs.length-1))%bs.length;bs[i].focus();show(bs[i].dataset.k)});
+show('sig');
+
+/* faq */
+const qas=document.getElementById('qas');
+qas.innerHTML=faqs.map(([q,a],i)=>`<div class="qa${i===0?' open':''}"><button aria-expanded="${i===0}" aria-controls="a${i}" id="q${i}">${esc(q)}</button><div class="ans" id="a${i}" role="region" aria-labelledby="q${i}"><div><p>${esc(a)}</p></div></div></div>`).join('');
+qas.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const q=b.parentElement,o=!q.classList.contains('open');q.classList.toggle('open',o);b.setAttribute('aria-expanded',o);setTimeout(()=>ST&&ST.refresh(),650)});
+
+/* hours */
+let mtl;try{mtl=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Toronto'}))}catch(e){mtl=new Date()}
+const di=(mtl.getDay()+6)%7,hr=mtl.getHours()+mtl.getMinutes()/60,slot=H[di][1],isOpen=!!(slot&&hr>=slot[0]&&hr<slot[1]);
+document.getElementById('hrs').innerHTML=H.map((h,i)=>`<tr class="${i===di?'today':''}"><td>${h[0]}</td><td>${h[2]}</td></tr>`).join('');
+const nowEl=document.getElementById('now');nowEl.classList.toggle('off',!isOpen);nowEl.lastElementChild.textContent=isOpen?T('Ouvert en ce moment'):T('Fermé en ce moment');
+
+/* before / after */
+const ba=document.getElementById('ba'),baR=document.getElementById('baR');
+baR.addEventListener('input',()=>ba.style.setProperty('--x',baR.value+'%'));
+
+/* video */
+const vid=document.getElementById('vid');
+const tryPlay=v=>{const p=v.play&&v.play();if(p&&p.catch)p.catch(()=>{})};
+tryPlay(vid);
+document.addEventListener('pointerdown',()=>{document.querySelectorAll('video').forEach(tryPlay)},{once:true});
+
+/* nav + fab */
+const nav=document.getElementById('nav'),burger=document.getElementById('burger'),fab=document.getElementById('fab');let lastY=0;
+function onScroll(y){const vh=innerHeight;nav.classList.toggle('on',y>vh*.85);nav.classList.toggle('hide',y>lastY&&y>vh&&!nav.classList.contains('open'));fab.classList.toggle('on',y>vh*.7);lastY=y}
+burger.addEventListener('click',()=>{const o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+document.getElementById('links').addEventListener('click',e=>{if(e.target.closest('a')){nav.classList.remove('open');burger.setAttribute('aria-expanded','false')}});
+
+/* smooth scroll */
+let lenis=null;
+if(window.Lenis){try{lenis=new Lenis({duration:1.2,smoothWheel:true});
+  lenis.on('scroll',e=>{onScroll(e.scroll);if(ST)ST.update()});
+  if(G){G.ticker.add(t=>lenis.raf(t*1000));G.ticker.lagSmoothing(0)}else{const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf)}
+  document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a||a.hasAttribute('data-book'))return;const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}});
+}catch(e){lenis=null}}
+if(!lenis)addEventListener('scroll',()=>onScroll(scrollY),{passive:true});
+onScroll(0);
+
+/* cursor + magnetic */
+if(fine){
+  document.documentElement.classList.add('cur-on');
+  const cring=document.getElementById('cring');
+  let cx=innerWidth/2,cy=innerHeight/2,kx=cx,ky=cy,rx=cx,ry=cy;
+  addEventListener('pointermove',e=>{cx=e.clientX;cy=e.clientY},{passive:true});
+  const ml=()=>{kx+=(cx-kx)*.5;ky+=(cy-ky)*.5;rx+=(cx-rx)*.14;ry+=(cy-ry)*.14;cur.style.transform=`translate(${kx}px,${ky}px)`;cring.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(ml)};ml();
+  document.addEventListener('mouseover',e=>{const t=e.target;const card=t.closest&&t.closest('.flip,.ig a');const ln=t.closest&&t.closest('a,button,select,input,label,summary');cring.classList.toggle('big',!!card);cring.classList.toggle('link',!card&&!!ln);cur.classList.toggle('hide',!!card)});
+  document.querySelectorAll('.mag').forEach(el=>{
+    el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();el.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.22}px,${(e.clientY-r.top-r.height/2)*.32}px)`});
+    el.addEventListener('mouseleave',()=>{el.style.transition='transform .6s cubic-bezier(.2,.8,.2,1),color .45s';el.style.transform='';setTimeout(()=>{el.style.transition=''},600)});
+  });
+}
+
+/* split words */
+const splitWords=(root,cls,inner)=>{const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(w=>{if(!w)return;if(/^\s+$/.test(w)){f.appendChild(document.createTextNode(' '));return}const s=document.createElement('span');s.className=cls+(n.classList&&n.classList.contains('r')?' r':'');if(inner){const i=document.createElement('i');i.textContent=w;s.appendChild(i)}else s.textContent=w;f.appendChild(s)});c.replaceWith(f)}else if(c.nodeType===1&&c.tagName!=='BR')walk(c)})};walk(root)};
+document.querySelectorAll('.split').forEach(h=>splitWords(h,'sp',true));
+const big=document.getElementById('big');splitWords(big,'w',false);
+
+/* page background colour per section */
+const bgCol={v:'#FFEFF1'};
+
+/* preloader + scroll animations */
+const pre=document.getElementById('pre'),bar=document.getElementById('bar');
+let started=false;
+function start(){
+  if(started)return;started=true;
+  pre.classList.add('done');
+  if(!G||!ST){document.querySelectorAll('.rv-in,.clip').forEach(e=>{e.style.opacity=1;e.style.transform='none';e.style.clipPath='none'});big.querySelectorAll('.w').forEach(w=>w.classList.add('on'));return}
+  const tl=G.timeline({delay:.3});
+  tl.from('#vid,.poster',{scale:1.25,duration:2.6,ease:'expo.out'})
+    .from('.hero h1 .sp>i',{yPercent:115,duration:1.4,ease:'expo.out',stagger:.09},.2)
+    .from('.hin',{y:30,opacity:0,duration:1.2,ease:'expo.out',stagger:.1},.6);
+  G.to('#vid,.poster',{yPercent:18,scale:1.08,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+  G.to('.hero .wrap',{yPercent:-25,opacity:0,ease:'none',scrollTrigger:{trigger:'#hero',start:'40% top',end:'bottom top',scrub:true}});
+  document.querySelectorAll('.split').forEach(h=>{if(h.closest('.hero'))return;G.from(h.querySelectorAll('.sp>i'),{yPercent:115,duration:1.25,ease:'expo.out',stagger:.045,scrollTrigger:{trigger:h,start:'top 88%'}})});
+  G.utils.toArray('.rv-in').forEach(el=>G.to(el,{opacity:1,y:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 90%'}}));
+  G.utils.toArray('.clip').forEach(el=>G.to(el,{clipPath:'inset(0% 0% 0% 0%)',duration:1.7,ease:'expo.inOut',scrollTrigger:{trigger:el,start:'top 85%'}}));
+  G.utils.toArray('.par').forEach(img=>G.fromTo(img,{yPercent:-9},{yPercent:9,ease:'none',scrollTrigger:{trigger:img.parentElement,scrub:true}}));
+  /* stacking layers: previous one shrinks and darkens */
+  ST.matchMedia({'(min-width: 861px)':()=>{
+    const ls=G.utils.toArray('.layer');
+    ls.forEach((l,i)=>{if(i===ls.length-1)return;G.to(l,{scale:.92,borderRadius:'44px',ease:'none',scrollTrigger:{trigger:ls[i+1],start:'top bottom',end:'top top',scrub:true}})});
+  }});
+  /* background colour change */
+  G.utils.toArray('[data-bg]').forEach(s=>ST.create({trigger:s,start:'top 55%',end:'bottom 55%',onToggle:self=>{if(self.isActive)G.to(bgCol,{v:s.dataset.bg,duration:1.1,ease:'power2.out',onUpdate:()=>{document.body.style.background=bgCol.v}})}}));
+  G.from('#eq .t',{y:70,scale:.94,opacity:0,duration:1.5,ease:'expo.out',stagger:.16,scrollTrigger:{trigger:'#eq',start:'top 85%'}});
+  G.from('#eq .op',{scale:0,opacity:0,duration:1,ease:'back.out(2.2)',stagger:.2,delay:.4,scrollTrigger:{trigger:'#eq',start:'top 85%'}});
+  document.querySelectorAll('[data-count]').forEach(el=>{const o={v:0},n=+el.dataset.count;G.to(o,{v:n,duration:1.8,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 95%'},onUpdate:()=>{el.textContent=Math.round(o.v)}})});
+  const m1=document.getElementById('mq1'),m2=document.getElementById('mq2');let x1=0,x2=-50,vel=0;
+  G.ticker.add(()=>{const v=lenis?lenis.velocity:0;vel+=(v-vel)*.1;const s=.035+Math.min(Math.abs(vel)*.012,.6);x1-=s;x2+=s;if(x1<-50)x1+=50;if(x2>0)x2-=50;m1.style.transform=`translateX(${x1}%)`;m2.style.transform=`translateX(${x2}%) skewX(${G.utils.clamp(-10,10,vel*.5)}deg)`});
+  const ws=[...big.querySelectorAll('.w')];
+  ST.create({trigger:big,start:'top 85%',end:'bottom 40%',scrub:true,onUpdate:s=>{const k=Math.round(s.progress*ws.length);ws.forEach((w,i)=>w.classList.toggle('on',i<k))}});
+  ST.matchMedia({'(min-width: 861px)':()=>{
+    const hs=document.getElementById('hs');
+    const dist=()=>Math.max(0,hs.scrollWidth-innerWidth);
+    const tw=G.to(hs,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'#rituel',start:'top top',end:()=>'+='+dist(),pin:true,scrub:1,invalidateOnRefresh:true,onUpdate:s=>G.set('#prog',{scaleX:s.progress})}});
+    G.utils.toArray('.panel .pi img').forEach(img=>G.fromTo(img,{scale:1.3},{scale:1,ease:'none',scrollTrigger:{trigger:img.parentElement,containerAnimation:tw,start:'left right',end:'right left',scrub:true}}));
+    G.utils.toArray('.panel .st').forEach(t=>G.from(t,{xPercent:40,opacity:0,ease:'none',scrollTrigger:{trigger:t,containerAnimation:tw,start:'left 95%',end:'left 60%',scrub:true}}));
+  },'(max-width: 860px)':()=>{G.utils.toArray('.panel').forEach(p=>G.from(p,{y:60,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:p,start:'top 90%'}}))}});
+  /* before/after auto sweep on first view */
+  ST.create({trigger:ba,start:'top 70%',once:true,onEnter:()=>{const o={x:50};G.timeline().to(o,{x:18,duration:1.1,ease:'power2.inOut'}).to(o,{x:82,duration:1.6,ease:'power2.inOut'}).to(o,{x:50,duration:1.1,ease:'power2.inOut'}).eventCallback('onUpdate',()=>{ba.style.setProperty('--x',o.x+'%');baR.value=o.x})}});
+  /* instagram columns parallax */
+  G.utils.toArray('#ig .col').forEach(c=>G.to(c,{yPercent:+c.dataset.speed,ease:'none',scrollTrigger:{trigger:'#ig',scrub:true}}));
+  G.from('#ig a',{scale:.8,opacity:0,duration:1.2,ease:'expo.out',stagger:.06,scrollTrigger:{trigger:'#ig',start:'top 85%'}});
+    G.from('.final h2 .sp>i',{yPercent:115,duration:1.3,ease:'expo.out',stagger:.05,scrollTrigger:{trigger:'.final',start:'top 70%'}});
+  setTimeout(()=>ST.refresh(),500);
+}
+let p=0;
+const pt=setInterval(()=>{p=Math.min(100,p+Math.ceil(Math.random()*8));bar.style.transform=`scaleX(${p/100})`;if(p>=100){clearInterval(pt);setTimeout(start,300)}},45);
+setTimeout(start,4500);
+
+
+/* ---------- booking ---------- */
+{
+const all=[{id:'decouverte',c:'first',n:T('Soin Découverte Pema'),d:'45 min',m:45,p:TP('90 $'),t:T('Nouvelles clientes seulement')}].concat(soins.map(x=>({id:x.id,c:x.c,n:x.n,d:x.d,m:/1 h 15/.test(x.d)?75:/1 h 20/.test(x.d)?80:/1 h 30|séances|sessions/.test(x.d)?90:60,p:x.p,t:x.tag})));
+all.forEach(x=>{if(/séances|sessions/.test(x.d)){x.note=x.d;x.d=T('1 h 30 par séance');x.m=90}});
+const groups=[['first',T('Première visite')],...cats];
+const bk=document.getElementById('reserver'),svcList=document.getElementById('svcList'),stepsEl=[...document.querySelectorAll('#bkSteps li')],stps=[...bk.querySelectorAll('.stp')];
+const nextB=document.getElementById('bkNext'),backB=document.getElementById('bkBack'),sum=document.getElementById('bkSum');
+const st={svc:null,date:null,time:null,step:0};
+svcList.innerHTML=groups.map(([k,l])=>{const it=all.filter(x=>x.c===k);return it.length?`<h3>${esc(l)}</h3><div class="svc">${it.map(x=>`<label><input type="radio" name="svc" value="${x.id}"><span><b>${esc(x.n)}</b><small>${esc(x.t)}</small></span><span class="pp">${esc(x.p)}<small>${esc(x.note||x.d)}</small></span></label>`).join('')}</div>`:''}).join('');
+svcList.addEventListener('change',e=>{st.svc=all.find(x=>x.id===e.target.value);st.time=null;upd()});
+/* calendar */
+const today=new Date(mtl.getFullYear(),mtl.getMonth(),mtl.getDate());let view=new Date(today.getFullYear(),today.getMonth(),1);
+const maxM=new Date(today.getFullYear(),today.getMonth()+3,1);
+const calD=document.getElementById('calD'),calM=document.getElementById('calM'),prev=document.getElementById('calPrev'),nxt=document.getElementById('calNext');
+const LOC=window.PEMA_EN?'en-CA':'fr-CA';const fmtD=d=>d.toLocaleDateString(LOC,{weekday:'long',day:'numeric',month:'long'});
+function drawCal(){calM.textContent=view.toLocaleDateString(LOC,{month:'long',year:'numeric'});prev.disabled=view<=new Date(today.getFullYear(),today.getMonth(),1);nxt.disabled=view>=new Date(maxM.getFullYear(),maxM.getMonth()-1,1);
+ const first=(view.getDay()+6)%7,n=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();let h='';for(let i=0;i<first;i++)h+='<span></span>';
+ for(let d=1;d<=n;d++){const dt=new Date(view.getFullYear(),view.getMonth(),d),wd=(dt.getDay()+6)%7,closed=!H[wd][1]||dt<today||!slotsFor(dt).length;const sel=st.date&&+st.date===+dt;h+=`<button type="button" data-d="${+dt}" ${closed?'disabled':''} class="${sel?'sel':''} ${+dt===+today?'today':''}" aria-label="${fmtD(dt)}${closed?(window.PEMA_EN?', unavailable':', indisponible'):''}">${d}</button>`}
+ calD.innerHTML=h}
+function slotsFor(dt){const wd=(dt.getDay()+6)%7,o=H[wd][1];if(!o||!st.svc)return o?[1]:[];const out=[],dur=st.svc.m/60;for(let t=o[0];t+dur<=o[1]+1e-9;t+=.5){if(+dt===+today&&t<=hr+1)continue;out.push(t)}return out}
+const fmtT=t=>window.PEMA_EN?((Math.floor(t)+11)%12+1)+':'+(t%1?'30':'00')+(t>=12?' pm':' am'):Math.floor(t)+' h '+(t%1?'30':'00');
+function drawSlots(){const el=document.getElementById('slots');if(!st.date){el.innerHTML='<p class="empty">'+T("Sélectionnez d'abord une date.")+'</p>';return}const ss=slotsFor(st.date);document.getElementById('slotT').textContent=T('Heures disponibles')+' · '+fmtD(st.date);el.innerHTML=ss.length?ss.map(t=>`<button type="button" data-t="${t}" class="${st.time===t?'sel':''}">${fmtT(t)}</button>`).join(''):'<p class="empty">'+T('Aucune plage libre ce jour-là.')+'</p>'}
+calD.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;st.date=new Date(+b.dataset.d);st.time=null;drawCal();drawSlots();upd()});
+document.getElementById('slots').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;st.time=+b.dataset.t;drawSlots();upd()});
+prev.addEventListener('click',()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);drawCal()});
+nxt.addEventListener('click',()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);drawCal()});
+/* form */
+const F={p:document.getElementById('fP'),n:document.getElementById('fN'),t:document.getElementById('fT'),e:document.getElementById('fE'),m:document.getElementById('fM'),f:document.getElementById('fF')};
+function valid(show){let ok=true;const chk=(el,cond,msg)=>{const er=el.parentElement.querySelector('.err');if(!cond){ok=false;if(show)er.textContent=msg}else er.textContent=''};
+ chk(F.p,F.p.value.trim().length>1,T('Indiquez votre prénom'));chk(F.n,F.n.value.trim().length>1,T('Indiquez votre nom'));chk(F.t,F.t.value.replace(/\D/g,'').length>=10,T('Numéro à 10 chiffres'));chk(F.e,/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(F.e.value.trim()),T('Courriel invalide'));return ok}
+document.getElementById('bkForm').addEventListener('input',()=>{if(st.step===2)upd()});
+function recap(){const x=st.svc;return [['Soin',x.n],['Durée',x.note?x.note+' · '+x.d:x.d],['Date',st.date?fmtD(st.date):'—'],['Heure',st.time!=null?fmtT(st.time):'—'],['Prix',x.p],['Lieu',T('Studio privé, Hochelaga-Maisonneuve')]].map(([a,b])=>`<div><span>${T(a)}</span><b>${esc(b)}</b></div>`).join('')}
+function go(n){st.step=n;stps.forEach((s,i)=>s.classList.toggle('on',i===n));stepsEl.forEach((l,i)=>l.classList.toggle('on',i<=n));bk.querySelector('.panel2').scrollTop=0;
+ if(n===1){if(st.svc&&st.date&&!slotsFor(st.date).length)st.date=null;drawCal();drawSlots()}
+ if(n===2)document.getElementById('recap1').innerHTML=recap();
+ if(n===3){document.getElementById('recap2').innerHTML=recap()+`<div><span>${T('Au nom de')}</span><b>${esc(F.p.value.trim()+' '+F.n.value.trim())}</b></div><div><span>${T('Courriel')}</span><b>${esc(F.e.value.trim())}</b></div>`;document.getElementById('dName').textContent=F.p.value.trim()}
+ upd()}
+function upd(){const x=st.svc;sum.innerHTML=x?`${esc(x.d)}${st.date?' · '+esc(fmtD(st.date)):''}${st.time!=null?' · '+fmtT(st.time):''}<b>${esc(x.n)} · ${esc(x.p)}</b>`:T('Aucun soin choisi')+'<b>'+T('Choisissez un soin')+'</b>';
+ backB.style.visibility=st.step>0&&st.step<3?'visible':'hidden';
+ const can=[!!x,!!(st.date&&st.time!=null),valid(false),true][st.step];nextB.disabled=!can;
+ nextB.querySelector('span').textContent=T(['Choisir une date','Mes coordonnées','Confirmer le rendez-vous','Terminer'][st.step])}
+nextB.addEventListener('click',()=>{if(st.step===2&&!valid(true))return;if(st.step===3){close();return}go(st.step+1)});
+backB.addEventListener('click',()=>go(Math.max(0,st.step-1)));
+function open(id,step){if(id){st.svc=all.find(x=>x.id===id)||null;const r=svcList.querySelector(`input[value="${id}"]`);if(r)r.checked=true}
+ if(st.step===3){st.date=null;st.time=null;['p','n','t','e','m'].forEach(k=>F[k].value='');F.f.checked=false;if(!id){st.svc=null;svcList.querySelectorAll('input').forEach(i=>i.checked=false)}}
+ if(id==='decouverte')F.f.checked=true;
+ bk.classList.add('open');document.documentElement.style.overflow='hidden';if(lenis)lenis.stop();go(step&&st.svc?step:(st.svc?1:0));setTimeout(()=>bk.querySelector('.x').focus(),300)}
+function close(){bk.classList.remove('open');document.documentElement.style.overflow='';if(lenis)lenis.start()}
+bk.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',close));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&bk.classList.contains('open'))close()});
+document.addEventListener('click',e=>{const a=e.target.closest('[data-book]');if(!a)return;e.preventDefault();e.stopPropagation();open(a.dataset.book||null,a.dataset.book?1:0)},true);
+upd();drawCal();
+}
+
+/* ---------- WebGL ---------- */
+if(window.THREE){
+ try{
+  /* soft pink background shimmer */
+  const bg=document.getElementById('bg');
+  const br=new THREE.WebGLRenderer({canvas:bg,alpha:true,antialias:false});br.setPixelRatio(1);
+  const bs=new THREE.Scene(),bc=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+  const bm=new THREE.ShaderMaterial({transparent:true,uniforms:{t:{value:0},res:{value:new THREE.Vector2(1,1)}},vertexShader:'varying vec2 u;void main(){u=uv;gl_Position=vec4(position,1.);}',
+   fragmentShader:`uniform float t;uniform vec2 res;varying vec2 u;
+   float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+   float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+   float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p*=2.;a*=.5;}return v;}
+   void main(){vec2 p=u*vec2(res.x/res.y,1.)*2.;float q=fbm(p+vec2(t*.03,t*.02));float r=fbm(p+q*2.+vec2(-t*.02,t*.025));
+   vec3 c=mix(vec3(1.,.93,.95),vec3(.98,.78,.83),smoothstep(.35,.8,r));gl_FragColor=vec4(c,smoothstep(.4,.85,r)*.55);}`});
+  bs.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),bm));
+  const bsize=()=>{br.setSize(Math.ceil(innerWidth*.4),Math.ceil(innerHeight*.4),false);bm.uniforms.res.value.set(innerWidth,innerHeight)};bsize();addEventListener('resize',bsize);
+
+  const t0=performance.now();
+  const loop=()=>{requestAnimationFrame(loop);bm.uniforms.t.value=(performance.now()-t0)/1000;br.render(bs,bc)};loop();
+ }catch(err){console.warn(err);['gl','bg'].forEach(id=>{const c=document.getElementById(id);if(c)c.remove()})}
+}
+}
+</script>
+</body>
+</html>
